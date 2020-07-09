@@ -1,19 +1,9 @@
-# HospITTal
-## Agenda de citas 
-<p>Esta aplicacion para un hospital que permite al usuario registrarse en el mismo y agendar citas desde la comodidad de su hogar.
-<br>
-Las librerias que utilizamos fueron:
-<br> 
-import java.awt.*;
-<br> 
-import javax.swing.*;
-<br> 
-import java.awt.image.*;
-<br> 
-import java.io.*;
-<br> 
-import javax.imageio.*;
-<br>
-import java.awt.event.*;
-<br>
-como nota importante en en la clases cliente introducir en la linea 130 su direccion IP. </p> 
+<h1> HospITTal </h1>
+<h2> ¿Qué es HospITTal? </h2>
+<p>Esta es una aplicacion para un hospital que permite al usuario registrarse y agendar citas desde la comodidad de su hogar.<br>
+Una de las funciones relevantes es que se guardan los formularios clinicos y el operador del servidor puede acceder a ellos<br></p>
+<h2> Las librerias que utilizamos fueron:</h2>
+<ul>
+<li> Swing
+<li> AWT
+</ul> 

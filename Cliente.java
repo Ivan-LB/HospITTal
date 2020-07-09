@@ -1,5 +1,6 @@
-package aplicacion;
+package aplicacion.cliente;
 
+import aplicacion.utilerias.Objeto;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -91,7 +92,7 @@ public class Cliente extends JFrame implements ActionListener{
 		campoEstCivil=new JTextField(20);
 		campoEstCivil.setBounds(150,240,225,30);
 		campoEstCivil.setBorder(null);
-		
+
 		lblCel= new JLabel("Domicilio: ");
 		lblCel.setBounds(5,280,100,30);
 		campoCel=new JTextField(20);

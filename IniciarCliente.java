@@ -1,4 +1,4 @@
-package aplicacion;
+package aplicacion.cliente;
 
 class IniciarCliente{
   public static void main(String[] args) {

@@ -1,5 +1,6 @@
-package aplicacion;
+package aplicacion.cliente;
 
+import aplicacion.utilerias.Archivo;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Color;

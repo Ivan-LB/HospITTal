@@ -1,4 +1,4 @@
-package aplicacion;
+package aplicacion.utilerias;
 
 import javax.swing.*;
 import java.awt.*;

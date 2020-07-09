@@ -1,6 +1,6 @@
 package aplicacion.servidor;
 
-import aplicacion.Objeto;
+import aplicacion.utilerias.Objeto;
 import javax.swing.*;
 import java.awt.*;
 import java.net.*;

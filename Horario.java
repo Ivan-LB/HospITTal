@@ -23,7 +23,8 @@ JLabel ju;
 JLabel vi;
 JLabel sa;
 int i=0;
-Boolean[] btnsOcupados = new Boolean[24];
+
+public int numeroEnviar = -1;
 
 JComboBox doctores;
 JButton btnEnviar;
@@ -51,7 +52,7 @@ ColoredToggleButton dia[] = new ColoredToggleButton[24];
 			}
 		}
 		btnEnviar = new JButton("Enviar");
-		btnEnviar.setBounds(0,650,100,30);
+		btnEnviar.setBounds(200,500,200,50);
 
 		uno = new JLabel("8:00-10:00",JLabel.CENTER);
 		uno.setFont(new Font("Serif", Font.PLAIN, 20));
@@ -115,8 +116,11 @@ ColoredToggleButton dia[] = new ColoredToggleButton[24];
 		panel.add(sa);
 		panel.add(btnEnviar);
 
+		btnEnviar.addActionListener(this);
+
 		this.add(panel);
 
+		this.btnEnviar.setEnabled(false);
 
 		SwingUtilities.updateComponentTreeUI(this);
 		this.pack();
@@ -138,277 +142,41 @@ ColoredToggleButton dia[] = new ColoredToggleButton[24];
 	// 	}
 	// }
 	public void itemStateChanged(ItemEvent e){
-		 if(this.dia[0].isSelected()){
-			 dia[0].setBackground(Color.green);
-			 SwingUtilities.updateComponentTreeUI(dia[0]);
-			 btnsOcupados[0]=true;
-
-		 }else if (!this.dia[0].isSelected()){
-			 dia[0].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[0]);
-			 btnsOcupados[0]=false;
-
+		for(int g=0;g<24;g++){
+		 if(this.dia[g].isSelected()){
+			 SwingUtilities.updateComponentTreeUI(dia[g]);
+			 disableOthers(g);
+			 numeroEnviar = g;
+			 break;
+		 }else if (!this.dia[g].isSelected()){
+			 SwingUtilities.updateComponentTreeUI(dia[g]);
+			 enableOthers();
 		 }
-		 else if(this.dia[1].isSelected()){
-			 dia[1].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[1]);
-			 btnsOcupados[1]=true;
-
-		 }else if (!this.dia[1].isSelected()){
-			 dia[1].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[1]);
-			 btnsOcupados[1]=false;
-
-		 }
-		 else if(this.dia[2].isSelected()){
-			 dia[2].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[2]);
-			 btnsOcupados[2]=true;
-
-		 }else if (!this.dia[2].isSelected()){
-			 dia[2].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[2]);
-			 btnsOcupados[2]=false;
-
-		 }
-		 else if(this.dia[3].isSelected()){
-			 dia[3].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[3]);
-			 btnsOcupados[2]=true;
-
-		 }else if (!this.dia[0].isSelected()){
-			 dia[3].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[3]);
-			 btnsOcupados[3]=false;
-
-		 }
-		 else if(this.dia[4].isSelected()){
-			 dia[4].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[4]);
-			 btnsOcupados[4]=true;
-
-		 }else if (!this.dia[4].isSelected()){
-			 dia[4].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[4]);
-			 btnsOcupados[4]=false;
-
-		 }
-		 else if(this.dia[5].isSelected()){
-			 dia[5].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[5]);
-			 btnsOcupados[5]=true;
-
-		 }else if (!this.dia[5].isSelected()){
-			 dia[5].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[5]);
-			 btnsOcupados[5]=false;
-
-		 }
-		 else if(this.dia[6].isSelected()){
-			 dia[6].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[6]);
-			 btnsOcupados[6]=true;
-
-		 }else if (!this.dia[6].isSelected()){
-			 dia[6].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[6]);
-			 btnsOcupados[6]=false;
-
-		 }
-		 else if(this.dia[7].isSelected()){
-			 dia[7].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[7]);
-			 btnsOcupados[7]=true;
-
-		 }else if (!this.dia[7].isSelected()){
-			 dia[7].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[7]);
-			 btnsOcupados[7]=false;
-
-		 }
-		 else if(this.dia[8].isSelected()){
-			 dia[8].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[8]);
-			 btnsOcupados[8]=true;
-
-		 }else if (!this.dia[8].isSelected()){
-			 dia[8].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[8]);
-			 btnsOcupados[8]=false;
-
-		 }
-		 else if(this.dia[9].isSelected()){
-			 dia[9].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[9]);
-			 btnsOcupados[9]=true;
-
-		 }else if (!this.dia[9].isSelected()){
-			 dia[9].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[9]);
-			 btnsOcupados[9]=false;
-
-		 }
-		 else if(this.dia[10].isSelected()){
-			 dia[10].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[10]);
-			 btnsOcupados[10]=true;
-
-		 }else if (!this.dia[10].isSelected()){
-			 dia[10].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[10]);
-			 btnsOcupados[10]=false;
-
-		 }
-		 else if(this.dia[11].isSelected()){
-			 dia[11].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[11]);
-			 btnsOcupados[11]=true;
-
-		 }else if (!this.dia[11].isSelected()){
-			 dia[11].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[11]);
-			 btnsOcupados[11]=false;
-
-		 }
-		 else if(this.dia[12].isSelected()){
-			 dia[12].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[12]);
-			 btnsOcupados[12]=true;
-
-		 }else if (!this.dia[12].isSelected()){
-			 dia[12].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[12]);
-			 btnsOcupados[12]=false;
-
-		 }
-		 else if(this.dia[13].isSelected()){
-			 dia[13].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[13]);
-			 btnsOcupados[13]=true;
-
-		 }else if (!this.dia[13].isSelected()){
-			 dia[13].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[13]);
-			 btnsOcupados[13]=false;
-
-		 }
-		 else if(this.dia[14].isSelected()){
-			 dia[14].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[14]);
-			 btnsOcupados[14]=true;
-
-		 }else if (!this.dia[14].isSelected()){
-			 dia[14].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[14]);
-			 btnsOcupados[14]=false;
-
-		 }
-		 else if(this.dia[15].isSelected()){
-			 dia[15].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[15]);
-			 btnsOcupados[15]=true;
-
-		 }else if (!this.dia[15].isSelected()){
-			 dia[15].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[15]);
-			 btnsOcupados[15]=false;
-
-		 }
-		 else if(this.dia[17].isSelected()){
-			 dia[17].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[17]);
-			 btnsOcupados[17]=true;
-
-		 }else if (!this.dia[17].isSelected()){
-			 dia[17].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[17]);
-			 btnsOcupados[17]=false;
-
-		 }
-		 else if(this.dia[18].isSelected()){
-			 dia[18].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[18]);
-			 btnsOcupados[18]=true;
-
-		 }else if (!this.dia[18].isSelected()){
-			 dia[18].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[18]);
-			 btnsOcupados[18]=false;
-
-		 }
-		 else if(this.dia[19].isSelected()){
-			 dia[19].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[19]);
-			 btnsOcupados[19]=true;
-
-		 }else if (!this.dia[1].isSelected()){
-			 dia[19].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[19]);
-			 btnsOcupados[19]=false;
-
-		 }
-		 else if(this.dia[20].isSelected()){
-			 dia[20].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[20]);
-			 btnsOcupados[20]=true;
-
-		 }else if (!this.dia[20].isSelected()){
-			 dia[20].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[20]);
-			 btnsOcupados[20]=false;
-
-		 }
-		 else if(this.dia[21].isSelected()){
-			 dia[21].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[21]);
-			 btnsOcupados[21]=true;
-
-		 }else if (!this.dia[21].isSelected()){
-			 dia[21].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[21]);
-			 btnsOcupados[21]=false;
-
-		 }
-
-		 else if(this.dia[22].isSelected()){
-			 dia[22].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[22]);
-			 btnsOcupados[22]=true;
-
-		 }else if (!this.dia[22].isSelected()){
-			 dia[22].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[22]);
-			 btnsOcupados[22]=false;
-
-		 }
-		 else if(this.dia[23].isSelected()){
-			 dia[23].setBackground(Color.GREEN);
-			 SwingUtilities.updateComponentTreeUI(dia[23]);
-			 btnsOcupados[23]=true;
-
-		 }else if (!this.dia[22].isSelected()){
-			 dia[23].setBackground(Color.BLUE);
-			 SwingUtilities.updateComponentTreeUI(dia[23]);
-			 btnsOcupados[23]=false;
-
-		 }
+	 }
 	}
+
 public void actionPerformed(ActionEvent event){
 		 	if(event.getSource() == this.btnEnviar){
-				int cont=0;
-				for (int i=0; i<btnsOcupados.length; i++) {
-					if(btnsOcupados[i].equals(true)){
-						cont++;
-					}
-				}
-				if(cont==0){
-					JOptionPane.showMessageDialog(null,"Favor de Seleccionar una cita");
-				}else if(cont>1){
-					JOptionPane.showMessageDialog(null,"Favor de solamente seleccinar una cita");
-				}else{
-					System.out.println("Se agendo correctamente");
-				}
+				System.out.println(numeroEnviar);
 			}
 
+}
+
+public void disableOthers(int number){
+		this.btnEnviar.setEnabled(true);
+		for(int l=0;l<24;l++)
+		{
+			dia[l].setEnabled(false);
+			System.out.println("dis "+l);
+		}
+		 dia[number].setEnabled(true);
+		 System.out.println("app"+number);
+}
+public void enableOthers(){
+	this.btnEnviar.setEnabled(false);
+	for(int l=0;l<24;l++){
+		dia[l].setEnabled(true);
+		System.out.println("todos"+l);
+	}
 }
 }

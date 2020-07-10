@@ -147,8 +147,7 @@ public class Cliente extends JFrame implements ActionListener{
 				campoCurp.setText("");
 				DataInputStream in = new DataInputStream(socket.getInputStream());
 				respuestaServidor = in.readBoolean();
-
-				while((respuestaServidor = in.readBoolean())!=null){
+				while((respuestaServidor = in.readBoolean())==null){
 					System.out.println("Hola");
 					if(respuestaServidor.equals(true)){
 						//Registro registro= new registro();

@@ -222,6 +222,6 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
     }catch(Exception e){
       System.out.println("Error al enviar.");
     }
-    
+
   }
 }

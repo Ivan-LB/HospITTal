@@ -189,6 +189,7 @@ public  class LogIn extends JFrame implements ActionListener
                     System.out.println("Clave encontrado: "+ contenidoPass.get(i));
                 }
             }
+            System.out.println("Hola");
             //JOptionPane.showMessageDialog (null, "Usuario no registrado.", "ERROR", JOptionPane.ERROR_MESSAGE);
 
         }

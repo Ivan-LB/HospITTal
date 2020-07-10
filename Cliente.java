@@ -36,6 +36,7 @@ public class Cliente extends JFrame implements ActionListener{
 	public JLabel lblFondo;// lbl para el fondo que pondras amiko
 	public Color cAzul= new Color(208,231,227);
 	public Color cGris= new Color(187,211,216);
+	public Boolean respuestaServidor = new Boolean(false);
 
 
 
@@ -135,7 +136,6 @@ public class Cliente extends JFrame implements ActionListener{
 				ObjectOutputStream os = new ObjectOutputStream(socket.getOutputStream());
 				Objeto o = new Objeto(campoNombre.getText(),campoNss.getText(),campoSamgre.getText(),campoGenero.getText(),campoNacionalidad.getText(),campoEstCivil.getText(),campoCel.getText(),campoEnfermedad.getText(),campoCurp.getText());
 				os.writeObject(o);
-				os.close();
 				campoNombre.setText("");
 				campoNss.setText("");
 				campoSamgre.setText("");
@@ -145,7 +145,11 @@ public class Cliente extends JFrame implements ActionListener{
 				campoCel.setText("");
 				campoEnfermedad.setText("");
 				campoCurp.setText("");
-				Doctores d = new Doctores();
+				//Doctores d = new Doctores();
+				DataInputStream in = new DataInputStream(socket.getInputStream());
+				respuestaServidor = in.readBoolean();
+				System.out.println(respuestaServidor);
+				os.close();
 				this.dispose();
 			}catch (Exception e) {
 				System.out.println("Error en la conexion");

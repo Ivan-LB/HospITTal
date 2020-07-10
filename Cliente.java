@@ -145,14 +145,16 @@ public class Cliente extends JFrame implements ActionListener{
 				campoCel.setText("");
 				campoEnfermedad.setText("");
 				campoCurp.setText("");
-				//Doctores d = new Doctores();
 				DataInputStream in = new DataInputStream(socket.getInputStream());
 				respuestaServidor = in.readBoolean();
-				System.out.println(respuestaServidor);
 
 				while((respuestaServidor = in.readBoolean())!=null){
-	                System.out.println(respuestaServidor);
-            	}
+					System.out.println("Hola");
+					if(respuestaServidor.equals(true)){
+						//Registro registro= new registro();
+						System.out.println("Respuesta del servidor");
+					}
+        }
 				//os.close();
 				//this.dispose();
 			}catch (Exception e) {

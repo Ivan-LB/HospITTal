@@ -39,7 +39,6 @@ public class Cliente extends JFrame implements ActionListener{
 	public Boolean respuestaServidor = new Boolean(false);
 
 
-
 	public Cliente(){
 		panel = new JPanel();
 		panel.setLayout(null);
@@ -147,8 +146,7 @@ public class Cliente extends JFrame implements ActionListener{
 				campoCurp.setText("");
 				DataInputStream in = new DataInputStream(socket.getInputStream());
 				respuestaServidor = in.readBoolean();
-				while((respuestaServidor = in.readBoolean())==null){
-					System.out.println("Hola");
+				while((respuestaServidor = in.readBoolean())!=null){
 					if(respuestaServidor.equals(true)){
 						//Registro registro= new registro();
 						System.out.println("Respuesta del servidor");

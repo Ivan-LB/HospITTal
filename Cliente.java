@@ -132,7 +132,7 @@ public class Cliente extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent event){
 		if(event.getSource() == this.btnEnviar){
 			try {
-				Socket socket = new Socket("201.170.39.252",9000); //IP del servidor
+				Socket socket = new Socket("localhost",9000); //IP del servidor (201.170.39.252)
 				ObjectOutputStream os = new ObjectOutputStream(socket.getOutputStream());
 				Objeto o = new Objeto(campoNombre.getText(),campoNss.getText(),campoSamgre.getText(),campoGenero.getText(),campoNacionalidad.getText(),campoEstCivil.getText(),campoCel.getText(),campoEnfermedad.getText(),campoCurp.getText());
 				os.writeObject(o);
@@ -149,8 +149,12 @@ public class Cliente extends JFrame implements ActionListener{
 				DataInputStream in = new DataInputStream(socket.getInputStream());
 				respuestaServidor = in.readBoolean();
 				System.out.println(respuestaServidor);
-				os.close();
-				this.dispose();
+
+				while((respuestaServidor = in.readBoolean())!=null){
+	                System.out.println(respuestaServidor);
+            	}
+				//os.close();
+				//this.dispose();
 			}catch (Exception e) {
 				System.out.println("Error en la conexion");
 			}

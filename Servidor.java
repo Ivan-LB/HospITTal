@@ -30,6 +30,11 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
   Color color3= new Color(79,138,139);// Azul claro
   Color color4= new Color(244,246,255);// blanco azulado
 
+  ServerSocket server;
+  Socket socket;
+  ObjectInputStream is;
+  DataOutputStream os;
+
 
   public Servidor(){
     panel= new JPanel();
@@ -173,6 +178,8 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
   public void actionPerformed(ActionEvent e){
       if(e.getSource()== this.btnAceptar){
         r = true;
+        enviar();
+
       }
       if(e.getSource()== this.btnRechazar){
         r = false;
@@ -183,10 +190,10 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
   }
   public void run(){
     try {
-      ServerSocket server = new ServerSocket(9000); //Socket del servidor
+      server = new ServerSocket(9000); //Socket del servidor
       while(true){
-        Socket socket = server.accept(); //Socket del Cliente
-        ObjectInputStream is = new ObjectInputStream(socket.getInputStream());
+        socket = server.accept(); //Socket del Cliente
+        is = new ObjectInputStream(socket.getInputStream());
         Objeto o = (Objeto)is.readObject();
         lblNombre.setText(o.nombre);
         lblCel.setText(o.cel);
@@ -197,14 +204,24 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
         lblDom.setText(o.dom);
         lblEnfermedades.setText(o.enfermedad);
         lblCurp.setText(o.curp);
-        DataOutputStream os = new DataOutputStream(socket.getOutputStream());
+        os = new DataOutputStream(socket.getOutputStream());
         os.writeBoolean(getBoolean());
-        socket.close();
+        //socket.close();
 
       }
     }catch (Exception e) {
       e.printStackTrace();
     }
 
+  }
+
+  public void enviar()
+  {
+    try{
+      os.writeBoolean(getBoolean());
+    }catch(Exception e){
+      System.out.println("Error al enviar.");
+    }
+    
   }
 }

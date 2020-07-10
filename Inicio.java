@@ -45,6 +45,7 @@ public Inicio()
 
   no = new JButton("No");
   no.setBounds(250,250,100,30);
+  no.addActionListener(this);
 
   panel.add(titulo);
   panel.add(subtitulo);
@@ -60,9 +61,6 @@ public Inicio()
   this.setDefaultCloseOperation(EXIT_ON_CLOSE);
   this.setVisible(true);
   this.setLayout(null);
-
-  si.addActionListener(this);
-  no.addActionListener(this);
 }
   public void actionPerformed(ActionEvent event)
   {

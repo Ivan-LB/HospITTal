@@ -8,9 +8,11 @@ public class ColoredToggleButton extends JToggleButton
 
   Color motaQuemada = new Color(12,73,11);
 
+  Color amarillo = new Color(255,203,116);
+
     public ColoredToggleButton(String texto){
       this.setText(texto);
-      this.setForeground(Color.white);
+      this.setForeground(Color.BLACK);
       UIManager.put("ToggleButton.select", motaQuemada);
     }
 
@@ -20,11 +22,13 @@ public class ColoredToggleButton extends JToggleButton
         Color bg;
         if (isSelected()){
             bg = Color.green;
+            this.setForeground(Color.white);
             //UIManager.put("ColoredToggleButton.select",Color.green);
             this.setText("Selecto");
 
         } else {
-            bg = Color.blue;
+            bg = amarillo;
+            this.setForeground(Color.BLACK);
             this.setText("Disponible");
         }
         setBackground(bg);

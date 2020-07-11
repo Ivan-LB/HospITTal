@@ -22,9 +22,16 @@ JLabel mi;
 JLabel ju;
 JLabel vi;
 JLabel sa;
+
+JLabel instrucciones;
+
 int i=0;
 
+Color azulOscuro = new Color (7,3,26);
+
 public int numeroEnviar = -1;
+
+String fechaFinal;
 
 JComboBox doctores;
 JButton btnEnviar;
@@ -32,12 +39,22 @@ boolean confirmado = true;
 String [] doctor = {"pepe","Petronila","El Fede","Jairo"};
 Boolean seleccionado = new Boolean(false);
 ColoredToggleButton dia[] = new ColoredToggleButton[24];
+
+JButton salir;
 // ArrayList<Integer> arrayCitas = new ArrayList<>();
 	public Horario()
 	{
 
 		panel = new JPanel();
 		panel.setLayout(null);
+
+		panel.setBackground(azulOscuro);
+
+		instrucciones = new JLabel("Todas las fechas estan agendadas para la siguiente semana.",JLabel.CENTER);
+		instrucciones.setFont(new Font("Serif", Font.PLAIN, 18));
+		instrucciones.setBounds(100,600,600,100);
+		instrucciones.setOpaque(false);
+		instrucciones.setForeground(Color.white);
 
 		for(int y=1;y<5;y++){
 				for (int x=0;x<6;x++,i++) {
@@ -51,58 +68,79 @@ ColoredToggleButton dia[] = new ColoredToggleButton[24];
 				panel.add(dia[i]);
 			}
 		}
+
 		btnEnviar = new JButton("Enviar");
-		btnEnviar.setBounds(200,500,200,50);
+		btnEnviar.setBounds(300,550,200,50);
+
+		this.btnEnviar.setEnabled(false);
+		btnEnviar.setBackground(Color.darkGray);
 
 		uno = new JLabel("8:00-10:00",JLabel.CENTER);
 		uno.setFont(new Font("Serif", Font.PLAIN, 20));
 		uno.setBounds(0,100,100,100);
 		uno.setOpaque(false);
+		uno.setForeground(Color.white);
 
 		dos = new JLabel("11:00-1:00",JLabel.CENTER);
 		dos.setFont(new Font("Serif", Font.PLAIN, 20));
 		dos.setBounds(0,200,100,100);
 		dos.setOpaque(false);
+		dos.setForeground(Color.white);
 
 		tres = new JLabel("1:00-3:00",JLabel.CENTER);
 		tres.setFont(new Font("Serif", Font.PLAIN, 20));
 		tres.setBounds(0,300,100,100);
 		tres.setOpaque(false);
+		tres.setForeground(Color.white);
 
 		cuatro = new JLabel("3:00-5:00",JLabel.CENTER);
 		cuatro.setFont(new Font("Serif", Font.PLAIN, 20));
 		cuatro.setBounds(0,400,100,100);
 		cuatro.setOpaque(false);
+		cuatro.setForeground(Color.white);
 
 		l = new JLabel("Lu",JLabel.CENTER);
 		l.setFont(new Font("Serif", Font.PLAIN, 24));
 		l.setBounds(100,0,100,100);
 		l.setOpaque(false);
+		l.setForeground(Color.white);
 
 		m = new JLabel("Ma",JLabel.CENTER);
 		m.setFont(new Font("Serif", Font.PLAIN, 24));
 		m.setBounds(200,0,100,100);
 		m.setOpaque(false);
+		m.setForeground(Color.white);
 
 		mi = new JLabel("Mi",JLabel.CENTER);
 		mi.setFont(new Font("Serif", Font.PLAIN, 24));
 		mi.setBounds(300,0,100,100);
 		mi.setOpaque(false);
+		mi.setForeground(Color.white);
 
 		ju = new JLabel("Ju",JLabel.CENTER);
 		ju.setFont(new Font("Serif", Font.PLAIN, 24));
 		ju.setBounds(400,0,100,100);
 		ju.setOpaque(false);
+		ju.setForeground(Color.white);
 
 		vi = new JLabel("Vi",JLabel.CENTER);
 		vi.setFont(new Font("Serif", Font.PLAIN, 24));
 		vi.setBounds(500,0,100,100);
 		vi.setOpaque(false);
+		vi.setForeground(Color.white);
 
 		sa = new JLabel("Sa",JLabel.CENTER);
 		sa.setFont(new Font("Serif", Font.PLAIN, 24));
 		sa.setBounds(600,0,100,100);
 		sa.setOpaque(false);
+		sa.setForeground(Color.white);
+
+		salir = new JButton("Salir");
+		salir.setFont(new Font("Serif", Font.PLAIN, 11));
+		salir.setBounds(584,578,100,40);
+		salir.setOpaque(false);
+		salir.setForeground(Color.BLACK);
+		salir.setVisible(false);
 
 		panel.add(uno);
 		panel.add(dos);
@@ -115,8 +153,11 @@ ColoredToggleButton dia[] = new ColoredToggleButton[24];
 		panel.add(vi);
 		panel.add(sa);
 		panel.add(btnEnviar);
+		panel.add(instrucciones);
+		panel.add(salir);
 
 		btnEnviar.addActionListener(this);
+		salir.addActionListener(this);
 
 		this.add(panel);
 
@@ -125,7 +166,7 @@ ColoredToggleButton dia[] = new ColoredToggleButton[24];
 		SwingUtilities.updateComponentTreeUI(this);
 		this.pack();
 		this.setTitle("CREA TU CITA");
-		this.setBounds(20,40,760,760);
+		this.setBounds(700,400,760,760);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setLayout(null);
@@ -158,12 +199,129 @@ ColoredToggleButton dia[] = new ColoredToggleButton[24];
 public void actionPerformed(ActionEvent event){
 		 	if(event.getSource() == this.btnEnviar){
 				System.out.println(numeroEnviar);
+
+				switch (numeroEnviar)
+								{
+									case 0:
+									fechaFinal = ("Lunes " + uno.getText());
+									break;
+
+									case 1:
+									fechaFinal = ("Martes " + uno.getText());
+									break;
+
+									case 2:
+									fechaFinal = ("Miercoles " + uno.getText());
+									break;
+
+									case 3:
+									fechaFinal = ("Jueves " + uno.getText());
+									break;
+
+									case 4:
+									fechaFinal = ("Viernes " + uno.getText());
+									break;
+
+									case 5:
+									fechaFinal = ("Sabado " + uno.getText());
+									break;
+
+									case 6:
+									fechaFinal = ("Lunes " + dos.getText());
+									break;
+
+									case 7:
+									fechaFinal = ("Martes " + dos.getText());
+									break;
+
+									case 8:
+									fechaFinal = ("Miercoles " + dos.getText());
+									break;
+
+									case 9:
+									fechaFinal = ("Jueves " + dos.getText());
+									break;
+
+									case 10:
+									fechaFinal = ("Viernes " + dos.getText());
+									break;
+
+									case 11:
+									fechaFinal = ("Sabado " + dos.getText());
+									break;
+
+									case 12:
+									fechaFinal = ("Lunes " + tres.getText());
+									break;
+
+									case 13:
+									fechaFinal = ("Martes " + tres.getText());
+									break;
+
+									case 14:
+									fechaFinal = ("Miercoles " + tres.getText());
+									break;
+
+									case 15:
+									fechaFinal = ("Jueves " + tres.getText());
+									break;
+
+									case 16:
+									fechaFinal = ("Viernes " + tres.getText());
+									break;
+
+									case 17:
+									fechaFinal = ("Sabado " + tres.getText());
+									break;
+
+									case 18:
+									fechaFinal = ("Lunes " + cuatro.getText());
+									break;
+
+									case 19:
+									fechaFinal = ("Martes " + cuatro.getText());
+									break;
+
+									case 20:
+									fechaFinal = ("Miercoles " + cuatro.getText());
+									break;
+
+									case 21:
+									fechaFinal = ("Jueves " + cuatro.getText());
+									break;
+
+									case 22:
+									fechaFinal = ("Viernes " + cuatro.getText());
+									break;
+
+									case 23:
+									fechaFinal = ("Sabado " + cuatro.getText());
+									break;
+				}
+				if (JOptionPane.showConfirmDialog(null, fechaFinal, "Cita Agendada",
+				   JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+
+					System.out.println("okay");
+					disableAll();
+					btnEnviar.setEnabled(false);
+					salir.setVisible(true);
+
+				} else {
+
+						System.out.println("Continuar operacion");
+
+				}
+			}
+
+			else if(event.getSource() == this.salir){
+					System.exit(0);
 			}
 
 }
 
 public void disableOthers(int number){
 		this.btnEnviar.setEnabled(true);
+		btnEnviar.setBackground(Color.white);
 		for(int l=0;l<24;l++)
 		{
 			dia[l].setEnabled(false);
@@ -172,11 +330,24 @@ public void disableOthers(int number){
 		 dia[number].setEnabled(true);
 		 System.out.println("app"+number);
 }
+
+public void disableAll(){
+		this.btnEnviar.setEnabled(true);
+		btnEnviar.setBackground(Color.white);
+		for(int l=0;l<24;l++)
+		{
+			dia[l].setEnabled(false);
+			System.out.println("dis "+l);
+		}
+}
+
 public void enableOthers(){
 	this.btnEnviar.setEnabled(false);
+	btnEnviar.setBackground(Color.darkGray);
 	for(int l=0;l<24;l++){
 		dia[l].setEnabled(true);
 		System.out.println("todos"+l);
 	}
 }
+
 }

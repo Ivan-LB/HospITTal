@@ -71,7 +71,7 @@ public Inicio()
     }
     else if(event.getSource() == this.no)
     {
-      System.out.println("HOLA PUTO");
+      InicioSesion is = new InicioSesion();
     }
   }
 

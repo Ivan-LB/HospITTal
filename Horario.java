@@ -1,6 +1,5 @@
 package aplicacion.cliente;
 
-import aplicacion.utilerias.ColoredToggleButton;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.image.*;
@@ -9,8 +8,9 @@ import javax.imageio.*;
 import java.awt.event.*;
 import java.lang.*;
 import java.net.*;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+import java.util.*;
+
+import aplicacion.utilerias.ColoredToggleButton;
 
 class Horario extends JFrame implements ActionListener,ItemListener{
 //OBJETOS
@@ -174,17 +174,26 @@ JButton salir;
 		this.setVisible(true);
 		this.setLayout(null);
 
+		checarCitasPRO();
+
 	}
-	// public void checarArrayList(){
-	// 	for(int i=0; i<arrayCitas.size(); i++){
-	// 		for(int j=0; j<25; j++) {
-	// 			if(arrayCitas.get(i).equals(j)){
-	// 				dia[i].setBackground(Color.RED);
-	// 				dia[i].removeItemListener();
-	// 			}
-	// 		}
-	// 	}
-	// }
+
+	public void checarCitasPRO()
+	{
+		ArrayList<String> arrayCitas = new ArrayList<String>();
+		arrayCitas = Archivo.leerTodo("lista.txt");
+		Collections.sort(arrayCitas);
+
+			for(int lp=0; lp<arrayCitas.size(); lp++){
+			for(int j=0; j<25; j++) {
+				if(arrayCitas.get(lp).equals(j)){
+					dia[lp].setBackground(Color.RED);
+					dia[lp].setEnabled(false);
+				}
+			}
+		}
+	}
+
 	public void itemStateChanged(ItemEvent e){
 		for(int g=0;g<24;g++){
 		 if(this.dia[g].isSelected()){

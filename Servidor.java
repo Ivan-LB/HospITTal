@@ -177,10 +177,10 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
       if(e.getSource()== this.btnAceptar){
         r = true;
         enviar();
-
       }
       if(e.getSource()== this.btnRechazar){
         r = false;
+        enviar();
       }
   }
   public boolean getBoolean(){
@@ -210,7 +210,6 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
       e.printStackTrace();
     }
   }
-
   public void enviar()
   {
     try{

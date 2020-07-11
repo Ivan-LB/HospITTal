@@ -90,9 +90,11 @@ public class Registro extends JFrame implements ActionListener{
 		btnRegistro= new JButton("Registrar");
  		btnRegistro.setBounds(140,370,100,50);
  		btnRegistro.setBackground(color4);
+		btnRegistro.addActionListener(this);
  		btnRegresar= new JButton("Volver");
  		btnRegresar.setBounds(350,370,100,50);
  		btnRegresar.setBackground(color4);
+		btnRegresar.addActionListener(this);
 
  		panel.add(btnRegistro);panel.add(btnRegresar);
 
@@ -132,7 +134,9 @@ public class Registro extends JFrame implements ActionListener{
         Archivo.CrearArchivo(campoNombre.getText(),"Usuarios.txt");
         Archivo.CrearArchivo(campoClave.getText(),"Passwords.txt");
       }
+			JOptionPane.showMessageDialog(null,"Se ha creado su perfil exitosamente");
       Cliente c = new Cliente();
+			this.dispose();
   	}else	if(event.getSource()== this.btnRegresar){
       this.dispose();
   	}

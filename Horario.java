@@ -1,3 +1,6 @@
+package aplicacion.cliente;
+
+import aplicacion.utilerias.ColoredToggleButton;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.image.*;

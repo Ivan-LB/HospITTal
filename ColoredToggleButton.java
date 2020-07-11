@@ -1,4 +1,6 @@
-  import java.awt.*;
+package aplicacion.utilerias;
+
+import java.awt.*;
 import javax.swing.*;
 
 public class ColoredToggleButton extends JToggleButton

@@ -31,7 +31,7 @@ public class Archivo
 	{
 		try
 		{
-			String ruta = "./UsuariosContrasenna/" + nombre;
+			String ruta = "./UsuariosContrasennas/" + nombre;
 			File file = new File(ruta);
 
 			if(!file.exists())

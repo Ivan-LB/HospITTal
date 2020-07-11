@@ -37,4 +37,7 @@ public class ColoredToggleButton extends JToggleButton
         super.paintComponent(g);
 
     }
+    public void cambiarNombre(String texto){
+      this.setText(texto);
+    }
 }

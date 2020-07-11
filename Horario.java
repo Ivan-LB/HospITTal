@@ -11,6 +11,7 @@ import java.net.*;
 import java.util.*;
 
 import aplicacion.utilerias.ColoredToggleButton;
+import aplicacion.utilerias.Archivo;
 
 class Horario extends JFrame implements ActionListener,ItemListener{
 //OBJETOS
@@ -172,23 +173,26 @@ JButton salir;
 		this.setBounds(700,400,760,760);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
-		this.setLayout(null);
+		//this.setLayout(null);
 
 		checarCitasPRO();
 
 	}
 
-	public void checarCitasPRO()
-	{
+	public void checarCitasPRO(){
 		ArrayList<String> arrayCitas = new ArrayList<String>();
-		arrayCitas = Archivo.leerTodo("lista.txt");
-		Collections.sort(arrayCitas);
-
+		arrayCitas = Archivo.leerTodo("Lista.txt");
+		if(arrayCitas!=null){
+			Collections.reverse(arrayCitas);
 			for(int lp=0; lp<arrayCitas.size(); lp++){
-			for(int j=0; j<25; j++) {
-				if(arrayCitas.get(lp).equals(j)){
-					dia[lp].setBackground(Color.RED);
-					dia[lp].setEnabled(false);
+				System.out.println(arrayCitas.get(lp));
+				for(int j=0; j<24; j++) {
+					if(Integer.parseInt(arrayCitas.get(lp)) == j){
+						dia[j].setBackground(Color.RED);
+						System.out.println("Cambiado boton: "+j);
+						dia[j].setEnabled(false);
+						dia[j].cambiarNombre("Ocupado");
+					}
 				}
 			}
 		}

@@ -179,6 +179,8 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 					JOptionPane.showMessageDialog(null,"Su formulario fue aceptado por el servidor");
 					Doctores d = new Doctores();
 					this.dispose();
+				}else if(respuestaServidor.equals(false)){
+					JOptionPane.showMessageDialog(null,"Su formulario no fue aceptado por el servidor");
 				}
 			}
 		}catch (Exception e) {

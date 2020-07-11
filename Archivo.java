@@ -40,7 +40,28 @@ public class Archivo
 			}
 			FileWriter fw = new FileWriter(file,true);
       BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(contenido+"\n");
+			bw.write(contenido);
+			bw.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	public static void CrearArchivoP(String contenido, String nombre)
+	{
+		try
+		{
+			String ruta = "./UsuariosContrasennas/" + nombre;
+			File file = new File(ruta);
+
+			if(!file.exists())
+			{
+				file.createNewFile();
+			}
+			FileWriter fw = new FileWriter(file,true);
+      BufferedWriter bw = new BufferedWriter(fw);
+			bw.write("\n"+contenido);
 			bw.close();
 		}
 		catch(Exception e)

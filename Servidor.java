@@ -203,7 +203,7 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
         lblEnfermedades.setText(o.enfermedad);
         lblCurp.setText(o.curp);
         os = new DataOutputStream(socket.getOutputStream());
-        os.writeBoolean(getBoolean());
+        // os.writeBoolean(getBoolean());
         //socket.close();
       }
     }catch (Exception e) {

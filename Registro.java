@@ -118,7 +118,7 @@ public class Registro extends JFrame implements ActionListener{
   }
   public void actionPerformed(ActionEvent event){
   	if(event.getSource()== this.btnRegistro){
-      contenidoUser = Archivo.leerTodo("Usuario.txt");
+      contenidoUser = Archivo.leerTodo("./UsuariosContrasennas/Usuarios.txt");
       if(contenidoUser != null){
         for (int i=0;i<contenidoUser.size() ; i++) {
           if(campoNombre.getText().equals(contenidoUser.get(i))){
@@ -127,16 +127,19 @@ public class Registro extends JFrame implements ActionListener{
           }
         }
         if(cont==0){
-          Archivo.CrearArchivo(campoNombre.getText(),"Usuarios.txt");
-          Archivo.CrearArchivo(campoClave.getText(),"Passwords.txt");
+          Archivo.CrearArchivoP(campoNombre.getText(),"Usuarios.txt");
+          Archivo.CrearArchivoP(campoClave.getText(),"Passwords.txt");
+					JOptionPane.showMessageDialog(null,"Se ha creado su perfil exitosamentea");
+					Cliente c = new Cliente();
+					this.dispose();
         }
       }else{
         Archivo.CrearArchivo(campoNombre.getText(),"Usuarios.txt");
         Archivo.CrearArchivo(campoClave.getText(),"Passwords.txt");
+				JOptionPane.showMessageDialog(null,"Se ha creado su perfil exitosamente");
+				Cliente c = new Cliente();
+				this.dispose();
       }
-			JOptionPane.showMessageDialog(null,"Se ha creado su perfil exitosamente");
-      Cliente c = new Cliente();
-			this.dispose();
   	}else	if(event.getSource()== this.btnRegresar){
       this.dispose();
   	}

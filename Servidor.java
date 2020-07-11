@@ -207,12 +207,10 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
         os = new DataOutputStream(socket.getOutputStream());
         os.writeBoolean(getBoolean());
         //socket.close();
-
       }
     }catch (Exception e) {
       e.printStackTrace();
     }
-
   }
 
   public void enviar()

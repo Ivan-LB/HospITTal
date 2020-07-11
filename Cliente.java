@@ -7,16 +7,8 @@ import java.awt.event.*;
 import java.net.*;
 import java.io.*;
 
-public class Cliente extends JFrame implements ActionListener{
-	public JTextField campoNombre;
-	public JTextField campoNss;
-	public JTextField campoSamgre;
-	public JTextField campoGenero;
-	public JTextField campoNacionalidad;
-	public JTextField campoEstCivil;
-	public JTextField campoCel;
-	public JTextField campoEnfermedad;
-	public JTextField campoCurp;
+public class Cliente extends JFrame implements ActionListener, Runnable{
+	public JTextField camposTxt[] = new JTextField[9];
 	public JPanel panel;
 	public JButton btnEnviar;
 	public JLabel lblTexto;
@@ -37,7 +29,7 @@ public class Cliente extends JFrame implements ActionListener{
 	public Color cAzul= new Color(208,231,227);
 	public Color cGris= new Color(187,211,216);
 	public Boolean respuestaServidor = new Boolean(false);
-
+	public Thread hilo1;
 
 	public Cliente(){
 		panel = new JPanel();
@@ -58,69 +50,70 @@ public class Cliente extends JFrame implements ActionListener{
 
 		lblNombre=new JLabel("Nombre: ");
 		lblNombre.setBounds(5,40,60,30);
-		campoNombre=new JTextField(20);
-		campoNombre.setBounds(150,40,225,30);
-		campoNombre.setBorder(null);
+		camposTxt[0]=new JTextField(50);
+		camposTxt[0].setBounds(150,40,225,30);
+		camposTxt[0].setBorder(null);
 
 		lblNss=new JLabel("Celular: ");
 		lblNss.setBounds(5,80,60,30);
-		campoNss=new JTextField(20);
-		campoNss.setBounds(150,80,225,30);
-		campoNss.setBorder(null);
+		camposTxt[1]=new JTextField(10);
+		camposTxt[1].setBounds(150,80,225,30);
+		camposTxt[1].setBorder(null);
 
 		lblSangre=new JLabel("E-mail: ");
 		lblSangre.setBounds(5,120,100,30);
-		campoSamgre=new JTextField(20);
-		campoSamgre.setBounds(150,120,225,30);
-		campoSamgre.setBorder(null);
+		camposTxt[2]=new JTextField(50);
+		camposTxt[2].setBounds(150,120,225,30);
+		camposTxt[2].setBorder(null);
 
 
 		lblGenero=new JLabel("Tipo Sangre: ");
 		lblGenero.setBounds(5,160,100,30);
-		campoGenero=new JTextField(20);
-		campoGenero.setBounds(150,160,225,30);
-		campoGenero.setBorder(null);
+		camposTxt[3]=new JTextField(3);
+		camposTxt[3].setBounds(150,160,225,30);
+		camposTxt[3].setBorder(null);
 
 		lblNacionalidad= new JLabel("Genero:");
 		lblNacionalidad.setBounds(5,200,100,30);
-		campoNacionalidad=new JTextField(20);
-		campoNacionalidad.setBounds(150,200,225,30);
-		campoNacionalidad.setBorder(null);
+		camposTxt[4]=new JTextField(10);
+		camposTxt[4].setBounds(150,200,225,30);
+		camposTxt[4].setBorder(null);
 
 		lblEstCivil=new JLabel("Fecha Nacimiento: ");
 		lblEstCivil.setBounds(5,240,100,30);
-		campoEstCivil=new JTextField(20);
-		campoEstCivil.setBounds(150,240,225,30);
-		campoEstCivil.setBorder(null);
+		camposTxt[5]=new JTextField(10);
+		camposTxt[5].setBounds(150,240,225,30);
+		camposTxt[5].setBorder(null);
 
 		lblCel= new JLabel("Domicilio: ");
 		lblCel.setBounds(5,280,100,30);
-		campoCel=new JTextField(20);
-		campoCel.setBounds(150,280,225,30);
-		campoCel.setBorder(null);
+		camposTxt[6]=new JTextField(50);
+		camposTxt[6].setBounds(150,280,225,30);
+		camposTxt[6].setBorder(null);
 
 		lblEnfermedad=new JLabel("Alergias: ");
 		lblEnfermedad.setBounds(5,320,190,30);
-		campoEnfermedad=new JTextField(20);
-		campoEnfermedad.setBounds(150,320,225,30);
-		campoEnfermedad.setBorder(null);
+		camposTxt[7]=new JTextField(20);
+		camposTxt[7].setBounds(150,320,225,30);
+		camposTxt[7].setBorder(null);
 
 		lblCurp=new JLabel ("Enfermedades: ");
 		lblCurp.setBounds(5,360,100,30);
-		campoCurp=new JTextField(20);
-		campoCurp.setBounds(150,360,225,30);
-		campoCurp.setBorder(null);
+		camposTxt[8]=new JTextField(50);
+		camposTxt[8].setBounds(150,360,225,30);
+		camposTxt[8].setBorder(null);
 
 		btnEnviar=new JButton("Enviar");
-		btnEnviar.setBounds(255,410,75,30);
+		btnEnviar.setBounds(255,410,250,30);
 		btnEnviar.addActionListener(this);
 		btnEnviar.setBackground(cAzul);
 
 		panel.add(btnEnviar);
-		panel.add(campoNss);panel.add(campoNombre);panel.add(campoSamgre);panel.add(campoGenero);panel.add(campoNacionalidad);panel.add(campoEstCivil);panel.add(campoCel);panel.add(campoEnfermedad);panel.add(campoCurp);
+		panel.add(camposTxt[0]);panel.add(camposTxt[1]);panel.add(camposTxt[2]);panel.add(camposTxt[3]);panel.add(camposTxt[4]);panel.add(camposTxt[5]);panel.add(camposTxt[6]);panel.add(camposTxt[7]);panel.add(camposTxt[8]);
 		panel.add(lblTexto);panel.add(lblNombre);panel.add(lblNss);panel.add(lblSangre);panel.add(lblGenero);panel.add(lblNacionalidad);panel.add(lblEstCivil);panel.add(lblCel);panel.add(lblEnfermedad);panel.add(lblCurp);
 
 		panel.add(lblN);panel.add(lblO);panel.add(lblP);
+		hilo1 = new Thread(this);
 
 		this.add(panel);
 		this.setTitle("Cliente");
@@ -130,33 +123,40 @@ public class Cliente extends JFrame implements ActionListener{
 	}
 	public void actionPerformed(ActionEvent event){
 		if(event.getSource() == this.btnEnviar){
-			try {
-				Socket socket = new Socket("201.170.39.252",9000); //IP del servidor (201.170.39.252)
-				ObjectOutputStream os = new ObjectOutputStream(socket.getOutputStream());
-				Objeto o = new Objeto(campoNombre.getText(),campoNss.getText(),campoSamgre.getText(),campoGenero.getText(),campoNacionalidad.getText(),campoEstCivil.getText(),campoCel.getText(),campoEnfermedad.getText(),campoCurp.getText());
-				os.writeObject(o);
-				campoNombre.setText("");
-				campoNss.setText("");
-				campoSamgre.setText("");
-				campoGenero.setText("");
-				campoNacionalidad.setText("");
-				campoEstCivil.setText("");
-				campoCel.setText("");
-				campoEnfermedad.setText("");
-				campoCurp.setText("");
-				DataInputStream in = new DataInputStream(socket.getInputStream());
-				respuestaServidor = in.readBoolean();
-				while((respuestaServidor = in.readBoolean())!=null){
-					if(respuestaServidor.equals(true)){
-						//Registro registro= new registro();
-						System.out.println("Respuesta del servidor");
-					}
-        }
-				//os.close();
-				//this.dispose();
-			}catch (Exception e) {
-				System.out.println("Error en la conexion");
+			int cont = 0;
+			for(int i=0; i<camposTxt.length; i++) {
+				if(camposTxt[i].getText().isEmpty()){
+					cont++;
+				}
 			}
+			if(cont==0){
+				btnEnviar.setEnabled(false);
+				hilo1.start();
+			}else{
+				JOptionPane.showMessageDialog(null,"Favor de llenar todos los campos");
+			}
+		}
+	}
+	public void run(){
+		try {
+			Socket socket = new Socket("201.170.39.252",9000); //IP del servidor (201.170.39.252)
+			ObjectOutputStream os = new ObjectOutputStream(socket.getOutputStream());
+			Objeto o = new Objeto(camposTxt[0].getText(),camposTxt[1].getText(),camposTxt[2].getText(),camposTxt[3].getText(),camposTxt[4].getText(),camposTxt[5].getText(),camposTxt[6].getText(),camposTxt[7].getText(),camposTxt[8].getText());
+			os.writeObject(o);
+			DataInputStream in = new DataInputStream(socket.getInputStream());
+			respuestaServidor = in.readBoolean();
+			while((respuestaServidor = in.readBoolean())!=null){
+				if(respuestaServidor.equals(true)){
+					//Registro registro= new registro();
+					System.out.println("Aceptado por el servidor: ");
+					for(int i=0; i<camposTxt.length; i++) {
+						camposTxt[i].setText("");
+					}
+					//this.dispose();
+				}
+			}
+		}catch (Exception e) {
+			System.out.println("Error en la conexion");
 		}
 	}
 }

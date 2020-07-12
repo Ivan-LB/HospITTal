@@ -138,7 +138,7 @@ int numUsers;
 		SwingUtilities.updateComponentTreeUI(this);
 		this.pack();
 		this.setTitle("Centro De Control");
-		this.setBounds(700,400,760,760);
+		this.setBounds(500,0,760,760);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setLayout(null);
@@ -153,6 +153,7 @@ public void actionPerformed(ActionEvent event){
       else if(event.getSource() == this.doctores)
       {
         Doctores doc = new Doctores(nombreMio,numUsers);
+        this.dispose();
       }
 }
 

@@ -91,7 +91,7 @@ public class Doctores extends JFrame implements ActionListener{
     	doc1Turno.setBounds(290,170,150,30);
       doc1Turno.setBackground(color4);
       doc1Turno.setOpaque(true);
-    	doc1Cedula= new JLabel("DR.Cardiologia",SwingConstants.CENTER);
+    	doc1Cedula= new JLabel("123489555",SwingConstants.CENTER);
     	doc1Cedula.setBounds(290,210,150,30);
       doc1Cedula.setBackground(color4);
       doc1Cedula.setOpaque(true);
@@ -114,7 +114,7 @@ public class Doctores extends JFrame implements ActionListener{
     	doc2Turno.setBounds(290,170,150,30);
       doc2Turno.setBackground(color4);
       doc2Turno.setOpaque(true);
-    	doc2Cedula= new JLabel("DR.Traumatologia",SwingConstants.CENTER);
+    	doc2Cedula= new JLabel("485562198",SwingConstants.CENTER);
     	doc2Cedula.setBounds(290,210,150,30);
       doc2Cedula.setBackground(color4);
       doc2Cedula.setOpaque(true);
@@ -137,7 +137,7 @@ public class Doctores extends JFrame implements ActionListener{
     	doc3Turno.setBounds(290,170,150,30);
       doc3Turno.setBackground(color4);
       doc3Turno.setOpaque(true);
-    	doc3Cedula= new JLabel("DR.Pediatria",SwingConstants.CENTER);
+    	doc3Cedula= new JLabel("12345687",SwingConstants.CENTER);
     	doc3Cedula.setBounds(290,210,150,30);
       doc3Cedula.setBackground(color4);
       doc3Cedula.setOpaque(true);
@@ -161,7 +161,7 @@ public class Doctores extends JFrame implements ActionListener{
     	doc4Turno.setBounds(290,170,150,30);
       doc4Turno.setBackground(color4);
       doc4Turno.setOpaque(true);
-    	doc4Cedula= new JLabel("DR.Ginecologia",SwingConstants.CENTER);
+    	doc4Cedula= new JLabel("81523578",SwingConstants.CENTER);
     	doc4Cedula.setBounds(290,210,150,30);
       doc4Cedula.setBackground(color4);
       doc4Cedula.setOpaque(true);

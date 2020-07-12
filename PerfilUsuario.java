@@ -31,10 +31,16 @@ Color color4= new Color(244,246,255);// blanco azulado
 
 JButton salir;
 
+JButton doctores;
+
+String nombreMio;
+
 	public PerfilUsuario(String nombreUsuario)
 	{
 		panel = new JPanel();
 		panel.setLayout(null);
+
+    this.nombreMio = nombreUsuario;
 
 		panel.setBackground(azulOscuro);
 
@@ -72,27 +78,33 @@ JButton salir;
     cita.setForeground(Color.white);
 
 		linea = new JLabel();
-		linea.setBounds(45,275,500,5);
+		linea.setBounds(45,275,600,5);
 		linea.setOpaque(true);
 		linea.setBackground(amarillo);
 
 		linea2 = new JLabel();
-		linea2.setBounds(45,475,500,5);
+		linea2.setBounds(45,475,600,5);
 		linea2.setOpaque(true);
 		linea.setBackground(amarillo);
 
-		lugarFav = new JLabel("Notas");
+		lugarFav = new JLabel("Menu de Doctores");
 		lugarFav.setFont(new Font("Serif", Font.PLAIN, 20));
 		lugarFav.setBounds(50,450,400,22);
 		lugarFav.setOpaque(false);
 		lugarFav.setForeground(Color.white);
-
 
 		salir = new JButton("Salir");
 		salir.setFont(new Font("Serif", Font.PLAIN, 11));
 		salir.setBounds(600,600,100,40);
 		salir.setOpaque(false);
 		salir.setForeground(Color.BLACK);
+
+    doctores = new JButton("Abrir Doctores");
+    doctores.setFont(new Font("Serif", Font.PLAIN, 11));
+    doctores.setBounds(100,500,200,40);
+    doctores.setOpaque(true);
+    doctores.setBackground(color3);
+    doctores.setForeground(Color.BLACK);
 
 		panel.add(nombre);
 		panel.add(paciente);
@@ -104,8 +116,10 @@ JButton salir;
 		panel.add(itt);
 		panel.add(lugarFav);
 		panel.add(salir);
+    panel.add(doctores);
 
 		salir.addActionListener(this);
+    doctores.addActionListener(this);
 
 		this.add(panel);
 
@@ -124,6 +138,10 @@ public void actionPerformed(ActionEvent event){
 			if(event.getSource() == this.salir){
 					System.exit(0);
 			}
+      else if(event.getSource() == this.doctores)
+      {
+        Doctores doc = new Doctores(nombreMio);
+      }
 }
 
 }

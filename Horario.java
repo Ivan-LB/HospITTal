@@ -13,44 +13,36 @@ import aplicacion.utilerias.Archivo;
 import aplicacion.utilerias.ColoredToggleButton;
 
 class Horario extends JFrame implements ActionListener,ItemListener{
-//OBJETOS
-JPanel panel;
-JLabel uno;
-JLabel dos;
-JLabel tres;
-JLabel cuatro;
-JLabel l;
-JLabel m;
-JLabel mi;
-JLabel ju;
-JLabel vi;
-JLabel sa;
-
-JLabel instrucciones;
-
-int i=0;
-
-Color azulOscuro = new Color (7,3,26);
-
-public int numeroEnviar = -1;
-
-String fechaFinal;
-
-JComboBox doctores;
-JButton btnEnviar;
-String nombreDoctor;
-int antiNull = 0;
-boolean confirmado = true;
-String [] doctor = {"pepe","Petronila","El Fede","Jairo"};
-Boolean seleccionado = new Boolean(false);
-ColoredToggleButton dia[] = new ColoredToggleButton[24];
-
-ArrayList<String> arrayCitas;
-
-JButton salir;
+	public JPanel panel;
+	public JLabel uno;
+	public JLabel dos;
+	public JLabel tres;
+	public JLabel cuatro;
+	public JLabel l;
+	public JLabel m;
+	public JLabel mi;
+	public JLabel ju;
+	public JLabel vi;
+	public JLabel sa;
+	public JLabel instrucciones;
+	public int i=0;
+	public Color azulOscuro = new Color (7,3,26);
+	public int numeroEnviar = -1;
+	public String fechaFinal;
+	public JComboBox doctores;
+	public JButton btnEnviar;
+	public String nombreDoctor;
+	public int antiNull = 0;
+	public boolean confirmado = true;
+	public String [] doctor = {"pepe","Petronila","El Fede","Jairo"};
+	public Boolean seleccionado = new Boolean(false);
+	public ColoredToggleButton dia[] = new ColoredToggleButton[24];
+	public ArrayList<String> arrayCitas;
+	public JButton salir;
 	public Horario(String nombreDoctor)
 	{
 		this.nombreDoctor=nombreDoctor;
+		System.out.println(nombreDoctor);
 		panel = new JPanel();
 		panel.setLayout(null);
 
@@ -161,14 +153,10 @@ JButton salir;
 		panel.add(btnEnviar);
 		panel.add(instrucciones);
 		panel.add(salir);
-
 		btnEnviar.addActionListener(this);
 		salir.addActionListener(this);
-
 		this.add(panel);
-
 		this.btnEnviar.setEnabled(false);
-
 		SwingUtilities.updateComponentTreeUI(this);
 		this.pack();
 		this.setTitle("CREA TU CITA");
@@ -176,26 +164,91 @@ JButton salir;
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setLayout(null);
-
 		checarCitasPRO();
 
 	}
 
 	public void checarCitasPRO(){
 		arrayCitas = new ArrayList<String>();
-		arrayCitas = Archivo.leerTodo("./Citas/Lista.txt");
-		if(arrayCitas!=null){
-			Collections.reverse(arrayCitas);
-			for(int lp=0; lp<arrayCitas.size(); lp++){
-				for(int j=0; j<24; j++) {
-					if(Integer.parseInt(arrayCitas.get(lp)) == j){
-						dia[j].setBackground(Color.RED);
-						dia[j].setEnabled(false);
-						dia[j].desactivar(false);
+		switch(this.nombreDoctor){
+			case "Jairo Lopez":
+				arrayCitas = Archivo.leerTodo("./Citas/Lista1.txt");
+				if(arrayCitas!=null){
+					Collections.reverse(arrayCitas);
+					for(int lp=0; lp<arrayCitas.size(); lp++){
+						for(int j=0; j<24; j++) {
+							if(Integer.parseInt(arrayCitas.get(lp)) == j){
+								dia[j].setBackground(Color.RED);
+								dia[j].setEnabled(false);
+								dia[j].desactivar(false);
+							}
+						}
+					}
+				}
+			break;
+			case "Pepe Aguilar":
+				arrayCitas = new ArrayList<String>();
+				arrayCitas = Archivo.leerTodo("./Citas/Lista2.txt");
+				if(arrayCitas!=null){
+					Collections.reverse(arrayCitas);
+					for(int lp=0; lp<arrayCitas.size(); lp++){
+						for(int j=0; j<24; j++) {
+							if(Integer.parseInt(arrayCitas.get(lp)) == j){
+								dia[j].setBackground(Color.RED);
+								dia[j].setEnabled(false);
+								dia[j].desactivar(false);
+							}
+						}
+					}
+				}
+			break;
+			case "Dante Cambrano":
+			arrayCitas = new ArrayList<String>();
+			arrayCitas = Archivo.leerTodo("./Citas/Lista3.txt");
+			if(arrayCitas!=null){
+				Collections.reverse(arrayCitas);
+				for(int lp=0; lp<arrayCitas.size(); lp++){
+					for(int j=0; j<24; j++) {
+						if(Integer.parseInt(arrayCitas.get(lp)) == j){
+							dia[j].setBackground(Color.RED);
+							dia[j].setEnabled(false);
+							dia[j].desactivar(false);
+						}
 					}
 				}
 			}
+			break;
+			case "Estefania Alba":
+			arrayCitas = new ArrayList<String>();
+			arrayCitas = Archivo.leerTodo("./Citas/Lista4.txt");
+			if(arrayCitas!=null){
+				Collections.reverse(arrayCitas);
+				for(int lp=0; lp<arrayCitas.size(); lp++){
+					for(int j=0; j<24; j++) {
+						if(Integer.parseInt(arrayCitas.get(lp)) == j){
+							dia[j].setBackground(Color.RED);
+							dia[j].setEnabled(false);
+							dia[j].desactivar(false);
+						}
+					}
+				}
+			}
+			break;
 		}
+		// arrayCitas = new ArrayList<String>();
+		// arrayCitas = Archivo.leerTodo("./Citas/Lista.txt");
+		// if(arrayCitas!=null){
+		// 	Collections.reverse(arrayCitas);
+		// 	for(int lp=0; lp<arrayCitas.size(); lp++){
+		// 		for(int j=0; j<24; j++) {
+		// 			if(Integer.parseInt(arrayCitas.get(lp)) == j){
+		// 				dia[j].setBackground(Color.RED);
+		// 				dia[j].setEnabled(false);
+		// 				dia[j].desactivar(false);
+		// 			}
+		// 		}
+		// 	}
+		// }
 	}
 
 	public void itemStateChanged(ItemEvent e){
@@ -215,116 +268,129 @@ JButton salir;
 public void actionPerformed(ActionEvent event){
 		 	if(event.getSource() == this.btnEnviar){
 				switch (numeroEnviar)
-								{
-									case 0:
-									fechaFinal = ("Lunes " + uno.getText());
-									break;
+				{
+					case 0:
+					fechaFinal = ("Lunes " + uno.getText());
+					break;
 
-									case 1:
-									fechaFinal = ("Martes " + uno.getText());
-									break;
+					case 1:
+					fechaFinal = ("Martes " + uno.getText());
+					break;
 
-									case 2:
-									fechaFinal = ("Miercoles " + uno.getText());
-									break;
+					case 2:
+					fechaFinal = ("Miercoles " + uno.getText());
+					break;
 
-									case 3:
-									fechaFinal = ("Jueves " + uno.getText());
-									break;
+					case 3:
+					fechaFinal = ("Jueves " + uno.getText());
+					break;
 
-									case 4:
-									fechaFinal = ("Viernes " + uno.getText());
-									break;
+					case 4:
+					fechaFinal = ("Viernes " + uno.getText());
+					break;
 
-									case 5:
-									fechaFinal = ("Sabado " + uno.getText());
-									break;
+					case 5:
+					fechaFinal = ("Sabado " + uno.getText());
+					break;
 
-									case 6:
-									fechaFinal = ("Lunes " + dos.getText());
-									break;
+					case 6:
+					fechaFinal = ("Lunes " + dos.getText());
+					break;
 
-									case 7:
-									fechaFinal = ("Martes " + dos.getText());
-									break;
+					case 7:
+					fechaFinal = ("Martes " + dos.getText());
+					break;
 
-									case 8:
-									fechaFinal = ("Miercoles " + dos.getText());
-									break;
+					case 8:
+					fechaFinal = ("Miercoles " + dos.getText());
+					break;
 
-									case 9:
-									fechaFinal = ("Jueves " + dos.getText());
-									break;
+					case 9:
+					fechaFinal = ("Jueves " + dos.getText());
+					break;
 
-									case 10:
-									fechaFinal = ("Viernes " + dos.getText());
-									break;
+					case 10:
+					fechaFinal = ("Viernes " + dos.getText());
+					break;
 
-									case 11:
-									fechaFinal = ("Sabado " + dos.getText());
-									break;
+					case 11:
+					fechaFinal = ("Sabado " + dos.getText());
+					break;
 
-									case 12:
-									fechaFinal = ("Lunes " + tres.getText());
-									break;
+					case 12:
+					fechaFinal = ("Lunes " + tres.getText());
+					break;
 
-									case 13:
-									fechaFinal = ("Martes " + tres.getText());
-									break;
+					case 13:
+					fechaFinal = ("Martes " + tres.getText());
+					break;
 
-									case 14:
-									fechaFinal = ("Miercoles " + tres.getText());
-									break;
+					case 14:
+					fechaFinal = ("Miercoles " + tres.getText());
+					break;
 
-									case 15:
-									fechaFinal = ("Jueves " + tres.getText());
-									break;
+					case 15:
+					fechaFinal = ("Jueves " + tres.getText());
+					break;
 
-									case 16:
-									fechaFinal = ("Viernes " + tres.getText());
-									break;
+					case 16:
+					fechaFinal = ("Viernes " + tres.getText());
+					break;
 
-									case 17:
-									fechaFinal = ("Sabado " + tres.getText());
-									break;
+					case 17:
+					fechaFinal = ("Sabado " + tres.getText());
+					break;
 
-									case 18:
-									fechaFinal = ("Lunes " + cuatro.getText());
-									break;
+					case 18:
+					fechaFinal = ("Lunes " + cuatro.getText());
+					break;
 
-									case 19:
-									fechaFinal = ("Martes " + cuatro.getText());
-									break;
+					case 19:
+					fechaFinal = ("Martes " + cuatro.getText());
+					break;
 
-									case 20:
-									fechaFinal = ("Miercoles " + cuatro.getText());
-									break;
+					case 20:
+					fechaFinal = ("Miercoles " + cuatro.getText());
+					break;
 
-									case 21:
-									fechaFinal = ("Jueves " + cuatro.getText());
-									break;
+					case 21:
+					fechaFinal = ("Jueves " + cuatro.getText());
+					break;
 
-									case 22:
-									fechaFinal = ("Viernes " + cuatro.getText());
-									break;
+					case 22:
+					fechaFinal = ("Viernes " + cuatro.getText());
+					break;
 
-									case 23:
-									fechaFinal = ("Sabado " + cuatro.getText());
-									break;
+					case 23:
+					fechaFinal = ("Sabado " + cuatro.getText());
+					break;
 				}
-				if (JOptionPane.showConfirmDialog(null, "Su cita ha sido agenda para"+fechaFinal+"\nCon el doctor/a"+nombreDoctor, "Cita Agendada",
+				if (JOptionPane.showConfirmDialog(null, "Su cita ha sido agenda para "+fechaFinal+"\nCon el doctor/a "+nombreDoctor, "Cita Agendada",
 				   JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
 					disableAll();
 					btnEnviar.setEnabled(false);
 					salir.setVisible(true);
-					arrayCitas.add(Integer.toString(numeroEnviar));
-					Archivo.guardarTodo(arrayCitas,"Lista.txt");
-
+					switch(this.nombreDoctor){
+						case "Jairo Lopez":
+							arrayCitas.add(Integer.toString(numeroEnviar));
+							Archivo.guardarTodo(arrayCitas,"Lista1.txt");
+						break;
+						case "Pepe Aguilar":
+							arrayCitas.add(Integer.toString(numeroEnviar));
+							Archivo.guardarTodo(arrayCitas,"Lista2.txt");
+						break;
+						case "Dante Cambrano":
+							arrayCitas.add(Integer.toString(numeroEnviar));
+							Archivo.guardarTodo(arrayCitas,"Lista3.txt");
+						break;
+						case "Estefania Alba":
+							arrayCitas.add(Integer.toString(numeroEnviar));
+							Archivo.guardarTodo(arrayCitas,"Lista4.txt");
+						break;
+					}
 				} else {
-
 						System.out.println("Continuar operacion");
-
 				}
 			}
 			else if(event.getSource() == this.salir){

@@ -19,6 +19,7 @@ public class Doctores extends JFrame implements ActionListener{
 	boolean t2= false;
 	boolean t3= false;
 	boolean t4= false;
+	boolean t5= false;
 
   JLabel top; JLabel end;
   JLabel nombre= new JLabel ("Nombre:",SwingConstants.CENTER);
@@ -72,6 +73,7 @@ public class Doctores extends JFrame implements ActionListener{
       escuela.setBounds(200,250,80,30);
       escuela.setBackground(color2);
       escuela.setOpaque(true);
+			nombre.setVisible(t5);especialidad.setVisible(t5);turno.setVisible(t5);cedula.setVisible(t5);escuela.setVisible(t5);
 
     	//Descripcion de los doctores
 
@@ -228,8 +230,8 @@ public class Doctores extends JFrame implements ActionListener{
 
   public void actionPerformed(ActionEvent event){
   	if(event.getSource() == this.btnDoc1) {
-  		t1=true; t2=false;t3=false;t4=false;
-
+  		t1=true; t2=false;t3=false;t4=false;t5= true;
+			nombre.setVisible(t5);especialidad.setVisible(t5);turno.setVisible(t5);cedula.setVisible(t5);escuela.setVisible(t5);
       btnAC1.setVisible(t1);btnAC2.setVisible(t2);btnAC3.setVisible(t3);btnAC4.setVisible(t4);
   	  lbl1.setVisible(t1);doc1Nombre.setVisible(t1);doc1Esp.setVisible(t1);doc1Turno.setVisible(t1);doc1Cedula.setVisible(t1);doc1Escuela.setVisible(t1);
   		lbl2.setVisible(t2);doc2Nombre.setVisible(t2);doc2Esp.setVisible(t2);doc2Turno.setVisible(t2);doc2Cedula.setVisible(t2);doc2Escuela.setVisible(t2);
@@ -237,8 +239,8 @@ public class Doctores extends JFrame implements ActionListener{
   		lbl4.setVisible(t4);doc4Nombre.setVisible(t4);doc4Esp.setVisible(t4);doc4Turno.setVisible(t4);doc4Cedula.setVisible(t4);doc4Escuela.setVisible(t4);
   	}
   	if(event.getSource() == this.btnDoc2){
-  		t2=true;t1=false;t3=false;t4=false;
-
+  		t2=true;t1=false;t3=false;t4=false;t5= true;
+			nombre.setVisible(t5);especialidad.setVisible(t5);turno.setVisible(t5);cedula.setVisible(t5);escuela.setVisible(t5);
       btnAC1.setVisible(t1);btnAC2.setVisible(t2);btnAC3.setVisible(t3);btnAC4.setVisible(t4);
   		lbl1.setVisible(t1);doc1Nombre.setVisible(t1);doc1Esp.setVisible(t1);doc1Turno.setVisible(t1);doc1Cedula.setVisible(t1);doc1Escuela.setVisible(t1);
   		lbl2.setVisible(t2);doc2Nombre.setVisible(t2);doc2Esp.setVisible(t2);doc2Turno.setVisible(t2);doc2Cedula.setVisible(t2);doc2Escuela.setVisible(t2);
@@ -247,8 +249,8 @@ public class Doctores extends JFrame implements ActionListener{
 
   	}
   	if (event.getSource() == this.btnDoc3) {
-  		t3=true;t1=false;t2=false;t4=false;
-
+  		t3=true;t1=false;t2=false;t4=false;t5= true;
+			nombre.setVisible(t5);especialidad.setVisible(t5);turno.setVisible(t5);cedula.setVisible(t5);escuela.setVisible(t5);
       btnAC1.setVisible(t1);btnAC2.setVisible(t2);btnAC3.setVisible(t3);btnAC4.setVisible(t4);
   		lbl1.setVisible(t1);doc1Nombre.setVisible(t1);doc1Esp.setVisible(t1);doc1Turno.setVisible(t1);doc1Cedula.setVisible(t1);doc1Escuela.setVisible(t1);
   		lbl2.setVisible(t2);doc2Nombre.setVisible(t2);doc2Esp.setVisible(t2);doc2Turno.setVisible(t2);doc2Cedula.setVisible(t2);doc2Escuela.setVisible(t2);
@@ -256,8 +258,8 @@ public class Doctores extends JFrame implements ActionListener{
   		lbl4.setVisible(t4);doc4Nombre.setVisible(t4);doc4Esp.setVisible(t4);doc4Turno.setVisible(t4);doc4Cedula.setVisible(t4);doc4Escuela.setVisible(t4);
   	}
   	if (event.getSource() == this.btnDoc4) {
-  		t4=true;t1=false;t2=false;t3=false;
-
+  		t4=true;t1=false;t2=false;t3=false;t5= true;
+			nombre.setVisible(t5);especialidad.setVisible(t5);turno.setVisible(t5);cedula.setVisible(t5);escuela.setVisible(t5);
       btnAC1.setVisible(t1);btnAC2.setVisible(t2);btnAC3.setVisible(t3);btnAC4.setVisible(t4);
   		lbl1.setVisible(t1);doc1Nombre.setVisible(t1);doc1Esp.setVisible(t1);doc1Turno.setVisible(t1);doc1Cedula.setVisible(t1);doc1Escuela.setVisible(t1);
   		lbl2.setVisible(t2);doc2Nombre.setVisible(t2);doc2Esp.setVisible(t2);doc2Turno.setVisible(t2);doc2Cedula.setVisible(t2);doc2Escuela.setVisible(t2);

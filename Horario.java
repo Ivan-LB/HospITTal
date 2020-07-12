@@ -9,9 +9,8 @@ import java.awt.event.*;
 import java.lang.*;
 import java.net.*;
 import java.util.*;
-
-import aplicacion.utilerias.ColoredToggleButton;
 import aplicacion.utilerias.Archivo;
+import aplicacion.utilerias.ColoredToggleButton;
 
 class Horario extends JFrame implements ActionListener,ItemListener{
 //OBJETOS
@@ -39,16 +38,19 @@ String fechaFinal;
 
 JComboBox doctores;
 JButton btnEnviar;
+String nombreDoctor;
+int antiNull = 0;
 boolean confirmado = true;
 String [] doctor = {"pepe","Petronila","El Fede","Jairo"};
 Boolean seleccionado = new Boolean(false);
 ColoredToggleButton dia[] = new ColoredToggleButton[24];
 
-JButton salir;
-// ArrayList<Integer> arrayCitas = new ArrayList<>();
-	public Horario()
-	{
+ArrayList<String> arrayCitas;
 
+JButton salir;
+	public Horario(String nombreDoctor)
+	{
+		this.nombreDoctor=nombreDoctor;
 		panel = new JPanel();
 		panel.setLayout(null);
 
@@ -62,7 +64,7 @@ JButton salir;
 
 		for(int y=1;y<5;y++){
 				for (int x=0;x<6;x++,i++) {
-					dia[i] = new ColoredToggleButton("Disponible");
+					dia[i] = new ColoredToggleButton();
 					dia[i].setBounds(100*(x+1),100*y,100,100);
 					//dia[i].addActionListener(this);
 					dia[i].addItemListener(this);
@@ -173,25 +175,23 @@ JButton salir;
 		this.setBounds(700,400,760,760);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
-		//this.setLayout(null);
+		this.setLayout(null);
 
 		checarCitasPRO();
 
 	}
 
 	public void checarCitasPRO(){
-		ArrayList<String> arrayCitas = new ArrayList<String>();
-		arrayCitas = Archivo.leerTodo("Lista.txt");
+		arrayCitas = new ArrayList<String>();
+		arrayCitas = Archivo.leerTodo("./Citas/Lista.txt");
 		if(arrayCitas!=null){
 			Collections.reverse(arrayCitas);
 			for(int lp=0; lp<arrayCitas.size(); lp++){
-				System.out.println(arrayCitas.get(lp));
 				for(int j=0; j<24; j++) {
 					if(Integer.parseInt(arrayCitas.get(lp)) == j){
 						dia[j].setBackground(Color.RED);
-						System.out.println("Cambiado boton: "+j);
 						dia[j].setEnabled(false);
-						dia[j].cambiarNombre("Ocupado");
+						dia[j].desactivar(false);
 					}
 				}
 			}
@@ -214,8 +214,6 @@ JButton salir;
 
 public void actionPerformed(ActionEvent event){
 		 	if(event.getSource() == this.btnEnviar){
-				System.out.println(numeroEnviar);
-
 				switch (numeroEnviar)
 								{
 									case 0:
@@ -314,13 +312,14 @@ public void actionPerformed(ActionEvent event){
 									fechaFinal = ("Sabado " + cuatro.getText());
 									break;
 				}
-				if (JOptionPane.showConfirmDialog(null, fechaFinal, "Cita Agendada",
+				if (JOptionPane.showConfirmDialog(null, "Su cita ha sido agenda para"+fechaFinal+"\nCon el doctor/a"+nombreDoctor, "Cita Agendada",
 				   JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
-					System.out.println("okay");
 					disableAll();
 					btnEnviar.setEnabled(false);
 					salir.setVisible(true);
+					arrayCitas.add(Integer.toString(numeroEnviar));
+					Archivo.guardarTodo(arrayCitas,"Lista.txt");
 
 				} else {
 
@@ -328,7 +327,6 @@ public void actionPerformed(ActionEvent event){
 
 				}
 			}
-
 			else if(event.getSource() == this.salir){
 					System.exit(0);
 			}
@@ -341,10 +339,8 @@ public void disableOthers(int number){
 		for(int l=0;l<24;l++)
 		{
 			dia[l].setEnabled(false);
-			System.out.println("dis "+l);
 		}
 		 dia[number].setEnabled(true);
-		 System.out.println("app"+number);
 }
 
 public void disableAll(){
@@ -353,7 +349,6 @@ public void disableAll(){
 		for(int l=0;l<24;l++)
 		{
 			dia[l].setEnabled(false);
-			System.out.println("dis "+l);
 		}
 }
 
@@ -362,8 +357,8 @@ public void enableOthers(){
 	btnEnviar.setBackground(Color.darkGray);
 	for(int l=0;l<24;l++){
 		dia[l].setEnabled(true);
-		System.out.println("todos"+l);
 	}
+	checarCitasPRO();
 }
 
 }

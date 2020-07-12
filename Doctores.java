@@ -182,20 +182,20 @@ public class Doctores extends JFrame implements ActionListener{
   		lbl4.setVisible(t4);doc4Nombre.setVisible(t4);doc4Esp.setVisible(t4);doc4Turno.setVisible(t4);doc4Cedula.setVisible(t4);doc4Escuela.setVisible(t4);
   	}
     if (event.getSource()== this.btnAC1) {
-			Horario h = new Horario();
-      System.out.println("BTN1");
+			Horario h = new Horario(doc1Nombre.getText());
+      //System.out.println("BTN1");
     }
     if (event.getSource()== this.btnAC2) {
-			Horario h = new Horario();
-      System.out.println("BTN2");
+			Horario h = new Horario(doc2Nombre.getText());
+      //System.out.println("BTN2");
     }
     if (event.getSource()== this.btnAC3) {
-			Horario h = new Horario();
-      System.out.println("BTN3");
+			Horario h = new Horario(doc3Nombre.getText());
+      //System.out.println("BTN3");
     }
     if (event.getSource()== this.btnAC4) {
-			Horario h = new Horario();
-      System.out.println("BTN4");
+			Horario h = new Horario(doc4Nombre.getText());
+      //System.out.println("BTN4");
     }
 
   }

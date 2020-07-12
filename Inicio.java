@@ -10,7 +10,6 @@ public class Inicio extends JFrame implements ActionListener{
 JPanel panel;
 
 JLabel titulo;
-JLabel subtitulo;
 JLabel pregunta;
 JLabel creditos;
 
@@ -19,36 +18,33 @@ JButton no;
 
 JButton irSin;
 
+Color azul = new Color(7,3,26);
+
 public Inicio()
 {
   panel = new JPanel();
   panel.setLayout(null);
+  panel.setBackground(azul);
 
-  titulo = new JLabel("HospITTal",JLabel.CENTER);
-  titulo.setBounds(100,50,300,37);
-  titulo.setFont(new Font("Serif", Font.PLAIN, 36));
+  titulo = new JLabel(new ImageIcon(((new ImageIcon("./imagenes/logo1.png")).getImage()).getScaledInstance(384,216,java.awt.Image.SCALE_SMOOTH)));
+  titulo.setBounds(0,50,500,216);
   titulo.setOpaque(false);
 
-  subtitulo = new JLabel("Bienvenido...",JLabel.CENTER);
-  subtitulo.setBounds(100,90,300,25);
-  subtitulo.setFont(new Font("Serif", Font.PLAIN, 24));
-  subtitulo.setOpaque(false);
-
   pregunta = new JLabel("Viene aqui por primera vez?",JLabel.CENTER);
-  pregunta.setBounds(100,200,300,23);
+  pregunta.setBounds(100,300,300,23);
   pregunta.setFont(new Font("Serif", Font.PLAIN, 22));
+  pregunta.setForeground(Color.white);
   pregunta.setOpaque(false);
 
   si = new JButton("Si");
-  si.setBounds(150,250,100,30);
+  si.setBounds(125,350,100,30);
   si.addActionListener(this);
 
   no = new JButton("No");
-  no.setBounds(250,250,100,30);
+  no.setBounds(275,350,100,30);
   no.addActionListener(this);
 
   panel.add(titulo);
-  panel.add(subtitulo);
   panel.add(pregunta);
   panel.add(si);
   panel.add(no);
@@ -56,7 +52,7 @@ public Inicio()
   this.add(panel);
 
   this.pack();
-  this.setTitle("INICIO");
+  this.setTitle("BIENVENIDO");
   this.setBounds(150,150,500,520);
   this.setDefaultCloseOperation(EXIT_ON_CLOSE);
   this.setVisible(true);
@@ -72,6 +68,7 @@ public Inicio()
     else if(event.getSource() == this.no)
     {
       InicioSesion is = new InicioSesion();
+      this.dispose();
     }
   }
 

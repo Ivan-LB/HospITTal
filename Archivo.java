@@ -26,14 +26,11 @@ public class Archivo
 		{}
 		return null;
 	}
-
-	public static void CrearArchivo(String contenido, String nombre)
-	{
+	public static void CrearArchivo(String contenido, String nombre){
 		try
 		{
 			String ruta = "./UsuariosContrasennas/" + nombre;
 			File file = new File(ruta);
-
 			if(!file.exists())
 			{
 				file.createNewFile();
@@ -69,4 +66,22 @@ public class Archivo
 			e.printStackTrace();
 		}
 	}
+	public static void guardarTodo(ArrayList<String> informacion, String nombre){
+		try{
+			String ruta = "./Citas/"+nombre;
+			File f = new File(ruta);
+			FileWriter fw = new FileWriter(f);
+			BufferedWriter escritura = new BufferedWriter(fw);
+			for(int i=0;i<informacion.size();i++){
+					escritura.write(informacion.get(i));
+					escritura.newLine();
+			}
+			escritura.close();
+		}
+		catch(Exception e){
+			System.out.println("error");
+		}
+
+}
+
 }

@@ -194,6 +194,10 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 					this.dispose();
 				}else if(respuestaServidor.equals(false)){
 					JOptionPane.showMessageDialog(null,"Su formulario no fue aceptado por el servidor");
+					btnRegistro.setEnabled(true);
+					for(int i=0; i<camposTxt.length; i++){
+						camposTxt[i].setText("");
+					}
 				}
 			}
 		}catch (Exception e) {

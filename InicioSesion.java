@@ -120,41 +120,41 @@ public class InicioSesion extends JFrame implements ActionListener{
       try{
         File usuarios = new File("./UsuariosContrasennas/Usuarios.txt");
         File claves = new File ("./UsuariosContrasennas/Passwords.txt");
+				File nombres = new File("./UsuariosContrasennas/Nombres.txt");
 
         FileReader fr1 = new FileReader(usuarios);
         FileReader fr2 = new FileReader(claves);
+				FileReader fr3 = new FileReader(nombres);
 
         BufferedReader bf1 = new BufferedReader(fr1);
         BufferedReader bf2 = new BufferedReader(fr2);
+				BufferedReader bf3 = new BufferedReader(fr3);
 
         String sCadena1 = bf1.readLine();
         String sCadena2 = bf2.readLine();
+				String sCadena3 = bf3.readLine();
 
-        while ((sCadena1!=null)||(sCadena2!=null)){
+        while ((sCadena1!=null)||(sCadena2!=null)||(sCadena3!=null)){
           if(sCadena1.equals(campoNombre.getText())){
             if(sCadena2.equals(campoClave.getText())){
              this.dispose();
              iguales = true;
-             Doctores d = new Doctores();
+             Doctores d = new Doctores(sCadena3);
             }
           }
           sCadena1 = bf1.readLine();
           sCadena2 = bf2.readLine();
+					sCadena3 = bf3.readLine();
           if(iguales.equals(false)){
             numUser++;
           }
         }
         if(iguales.equals(false)){
-          System.out.println(iguales);
           JOptionPane.showMessageDialog(null,"Verifique que escribio correctamente su usuario y contraseña");
         }
       }catch(Exception e){
         e.printStackTrace();
       }
     }
-    // else if(event.getSource() == this.btnBack){
-    //   Inicio i = inicio();
-    //   this.dispose();
-    // }
   }
 }

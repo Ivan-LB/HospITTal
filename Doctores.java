@@ -43,7 +43,6 @@ public class Doctores extends JFrame implements ActionListener{
 
 	public Doctores(String paciente){
 			this.paciente = paciente;
-			System.out.println(this.paciente);
     	panel = new JPanel();
     	panel.setLayout(null);
       panel.setBackground(color1);

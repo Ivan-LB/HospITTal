@@ -152,7 +152,7 @@ public void actionPerformed(ActionEvent event){
 			}
       else if(event.getSource() == this.doctores)
       {
-        Doctores doc = new Doctores(nombreMio);
+        Doctores doc = new Doctores(nombreMio,numUsers);
       }
 }
 

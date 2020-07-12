@@ -41,10 +41,12 @@ class Horario extends JFrame implements ActionListener,ItemListener{
 	public ArrayList<String> datosPaciente = new ArrayList<>();
 	public JButton salir;
 	public String paciente;
-	public Horario(String nombreDoctor, String paciente)
+	public int numUsers;
+	public Horario(String nombreDoctor, String paciente, int numUser)
 	{
 		this.nombreDoctor=nombreDoctor;
 		this.paciente = paciente;
+		this.numUsers = numUser;
 		panel = new JPanel();
 		panel.setLayout(null);
 
@@ -237,20 +239,6 @@ class Horario extends JFrame implements ActionListener,ItemListener{
 			}
 			break;
 		}
-		// arrayCitas = new ArrayList<String>();
-		// arrayCitas = Archivo.leerTodo("./Citas/Lista.txt");
-		// if(arrayCitas!=null){
-		// 	Collections.reverse(arrayCitas);
-		// 	for(int lp=0; lp<arrayCitas.size(); lp++){
-		// 		for(int j=0; j<24; j++) {
-		// 			if(Integer.parseInt(arrayCitas.get(lp)) == j){
-		// 				dia[j].setBackground(Color.RED);
-		// 				dia[j].setEnabled(false);
-		// 				dia[j].desactivar(false);
-		// 			}
-		// 		}
-		// 	}
-		// }
 	}
 
 	public void itemStateChanged(ItemEvent e){
@@ -412,6 +400,7 @@ public void actionPerformed(ActionEvent event){
 				}
 			}
 			else if(event.getSource() == this.salir){
+				PerfilUsuario pu = new PerfilUsuario(paciente,numUsers);
 					System.exit(0);
 			}
 }

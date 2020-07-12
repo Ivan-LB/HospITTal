@@ -1,6 +1,7 @@
 package aplicacion.servidor;
 
 import aplicacion.utilerias.Objeto;
+import aplicacion.utilerias.Archivo;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -24,6 +25,7 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
   JPanel panel;
   JButton btnRechazar;JButton btnAceptar;
   Boolean r= new Boolean(false);
+  ArrayList<String> datosPaciente = new ArrayList<>();
 
   Thread hilo1;
   Color color1= new Color(7,3,26);//Azul oscuro
@@ -145,8 +147,6 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
     lbl8.setBounds(20,200,110,30);
     lbl8.setBackground(color4);
     lbl8.setOpaque(true);
-
-
     //botones
 
     btnAceptar= new JButton("Aceptar");
@@ -179,9 +179,28 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
       if(e.getSource()== this.btnAceptar){
         r = true;
         enviar();
-        try {
-          this.socket.close();
-        } catch(Exception exception) { }
+        datosPaciente.add("Nombre del paciente: "+lblNombre.getText());
+        datosPaciente.add("Celular del paciente: "+lblCel.getText());
+        datosPaciente.add("E-mail del paciente: "+lblMail.getText());
+        datosPaciente.add("Tipo de Sangre: "+lblSangre.getText());
+        datosPaciente.add("Genero del paciente: "+ lblGenero.getText());
+        datosPaciente.add("Domicilio del paciente: "+lblDom.getText());
+        datosPaciente.add("Enfermedades Cronicas: "+lblEnfermedades.getText());
+        datosPaciente.add("CURP del paciente: "+lblCurp.getText());
+
+        lblNombre.setText("");
+        lblCel.setText("");
+        lblMail.setText("");
+        lblSangre.setText("");
+        lblGenero.setText("");
+        lblFecha.setText("");
+        lblDom.setText("");
+        lblEnfermedades.setText("");
+        lblCurp.setText("");
+        // try {
+        //   this.socket.close();
+        // } catch(Exception exception) { }
+
       }
       if(e.getSource()== this.btnRechazar){
         r = false;

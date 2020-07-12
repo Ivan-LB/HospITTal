@@ -130,17 +130,15 @@ public class InicioSesion extends JFrame implements ActionListener{
         BufferedReader bf2 = new BufferedReader(fr2);
 				BufferedReader bf3 = new BufferedReader(fr3);
 
-        String sCadena1 = bf1.readLine();
+				String sCadena1 = bf1.readLine();
         String sCadena2 = bf2.readLine();
 				String sCadena3 = bf3.readLine();
-
         while ((sCadena1!=null)||(sCadena2!=null)||(sCadena3!=null)){
           if(sCadena1.equals(campoNombre.getText())){
             if(sCadena2.equals(campoClave.getText())){
              this.dispose();
              iguales = true;
 						 PerfilUsuario p = new PerfilUsuario(sCadena3,numUser);
-             //Doctores d = new Doctores(sCadena3);
             }
           }
           sCadena1 = bf1.readLine();

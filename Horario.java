@@ -38,11 +38,13 @@ class Horario extends JFrame implements ActionListener,ItemListener{
 	public Boolean seleccionado = new Boolean(false);
 	public ColoredToggleButton dia[] = new ColoredToggleButton[24];
 	public ArrayList<String> arrayCitas;
+	public ArrayList<String> datosPaciente = new ArrayList<>();
 	public JButton salir;
-	public Horario(String nombreDoctor)
+	public String paciente;
+	public Horario(String nombreDoctor, String paciente)
 	{
 		this.nombreDoctor=nombreDoctor;
-		System.out.println(nombreDoctor);
+		this.paciente = paciente;
 		panel = new JPanel();
 		panel.setLayout(null);
 
@@ -375,18 +377,34 @@ public void actionPerformed(ActionEvent event){
 						case "Jairo Lopez":
 							arrayCitas.add(Integer.toString(numeroEnviar));
 							Archivo.guardarTodo(arrayCitas,"Lista1.txt");
+							datosPaciente.add("Su cita es: "+fechaFinal);
+							datosPaciente.add("Doctor: "+nombreDoctor);
+							datosPaciente.add("Favor de Presentarse en el consultorio 1");
+							Archivo.CrearArchivo(datosPaciente,paciente);
 						break;
 						case "Pepe Aguilar":
 							arrayCitas.add(Integer.toString(numeroEnviar));
 							Archivo.guardarTodo(arrayCitas,"Lista2.txt");
+							datosPaciente.add("Su cita es: "+fechaFinal);
+							datosPaciente.add("Doctor: "+nombreDoctor);
+							datosPaciente.add("Favor de Presentarse en el consultorio 2");
+							Archivo.CrearArchivo(datosPaciente,paciente);
 						break;
 						case "Dante Cambrano":
 							arrayCitas.add(Integer.toString(numeroEnviar));
 							Archivo.guardarTodo(arrayCitas,"Lista3.txt");
+							datosPaciente.add("Su cita es: "+fechaFinal);
+							datosPaciente.add("Doctor: "+nombreDoctor);
+							datosPaciente.add("Favor de Presentarse en el consultorio 3");
+							Archivo.CrearArchivo(datosPaciente,paciente);
 						break;
 						case "Estefania Alba":
 							arrayCitas.add(Integer.toString(numeroEnviar));
 							Archivo.guardarTodo(arrayCitas,"Lista4.txt");
+							datosPaciente.add("Su cita es: "+fechaFinal);
+							datosPaciente.add("Doctor: "+nombreDoctor);
+							datosPaciente.add("Favor de Presentarse en el consultorio 4");
+							Archivo.CrearArchivo(datosPaciente,paciente);
 						break;
 					}
 				} else {
@@ -396,9 +414,7 @@ public void actionPerformed(ActionEvent event){
 			else if(event.getSource() == this.salir){
 					System.exit(0);
 			}
-
 }
-
 public void disableOthers(int number){
 		this.btnEnviar.setEnabled(true);
 		btnEnviar.setBackground(Color.white);

@@ -45,6 +45,27 @@ public class Archivo
 			e.printStackTrace();
 		}
 	}
+	public static void CrearArchivo(ArrayList<String> datosPaciente, String nombre){
+		try
+		{
+			String ruta = "./ArchivosClientes/"+nombre;
+			File file = new File(ruta);
+			if(!file.exists())
+			{
+				file.createNewFile();
+			}
+			FileWriter fw = new FileWriter(file,true);
+      BufferedWriter bw = new BufferedWriter(fw);
+			for(int i=0;i<datosPaciente.size(); i++) {
+				bw.write(datosPaciente.get(i)+"\n");
+			}
+			bw.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
 	public static void CrearArchivoP(String contenido, String nombre)
 	{
 		try

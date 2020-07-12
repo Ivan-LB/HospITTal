@@ -13,6 +13,7 @@ public class Doctores extends JFrame implements ActionListener{
   JButton btnAC1;JButton btnAC2;JButton btnAC3;JButton btnAC4;
 	JPanel panel;
   JLabel pl;
+	String paciente;
 
 
 	boolean t1= false;
@@ -40,7 +41,9 @@ public class Doctores extends JFrame implements ActionListener{
     Color color4= new Color(244,246,255);// blanco azulado
 
 
-	public Doctores(){
+	public Doctores(String paciente){
+			this.paciente = paciente;
+			System.out.println(this.paciente);
     	panel = new JPanel();
     	panel.setLayout(null);
       panel.setBackground(color1);
@@ -267,20 +270,19 @@ public class Doctores extends JFrame implements ActionListener{
   		lbl4.setVisible(t4);doc4Nombre.setVisible(t4);doc4Esp.setVisible(t4);doc4Turno.setVisible(t4);doc4Cedula.setVisible(t4);doc4Escuela.setVisible(t4);
   	}
     if (event.getSource()== this.btnAC1) {
-			Horario h = new Horario(doc1Nombre.getText());
+			Horario h = new Horario(doc1Nombre.getText(),this.paciente);
 
     }
     if (event.getSource()== this.btnAC2) {
-			Horario h = new Horario(doc2Nombre.getText());
+			Horario h = new Horario(doc2Nombre.getText(),this.paciente);
 
     }
     if (event.getSource()== this.btnAC3) {
-			Horario h = new Horario(doc3Nombre.getText());
+			Horario h = new Horario(doc3Nombre.getText(),this.paciente);
 
     }
     if (event.getSource()== this.btnAC4) {
-			Horario h = new Horario(doc4Nombre.getText());
-
+			Horario h = new Horario(doc4Nombre.getText(),this.paciente);
     }
 
   }

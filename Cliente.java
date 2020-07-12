@@ -1,6 +1,7 @@
 package aplicacion.cliente;
 
 import aplicacion.utilerias.Objeto;
+import aplicacion.utilerias.Archivo;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -8,6 +9,7 @@ import java.net.*;
 import java.io.*;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.*;
 
 public class Cliente extends JFrame implements ActionListener, Runnable{
 	public JPanel panel;
@@ -31,6 +33,8 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 	public Color color2= new Color(255,203,116);//AMARILLO
 	public Color color3= new Color(79,138,139);// Azul claro
 	public Color color4= new Color(244,246,255);// blanco azulado
+	public ArrayList<String> nombresU;
+	public int cont;
 
 	public Cliente(){
 		panel= new JPanel();
@@ -177,7 +181,15 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 						camposTxt[i].setText("");
 					}
 					JOptionPane.showMessageDialog(null,"Su formulario fue aceptado por el servidor");
-					Doctores d = new Doctores();
+					nombresU = Archivo.leerTodo("./UsuariosContrasennas/Nombres.txt");
+		      if(nombresU != null){
+		        if(cont==0){
+		          Archivo.CrearArchivoP(o.nombre,"Nombres.txt");
+		        }
+		      }else if(nombresU == null){
+		        Archivo.CrearArchivo(o.nombre,"Nombres.txt");
+		      }
+					Doctores d = new Doctores(o.nombre);
 					this.dispose();
 				}else if(respuestaServidor.equals(false)){
 					JOptionPane.showMessageDialog(null,"Su formulario no fue aceptado por el servidor");

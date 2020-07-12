@@ -15,7 +15,7 @@ import java.io.FileNotFoundException;
 
 
 public class InicioSesion extends JFrame implements ActionListener{
-	 JPanel panel;
+   JPanel panel;
    JTextField campoNombre;
    JPasswordField campoClave;
    Font font = new Font("arial",Font.BOLD,25);
@@ -25,7 +25,7 @@ public class InicioSesion extends JFrame implements ActionListener{
    JLabel lblTitulo;
    JLabel fondo;
    int cont;
-   JButton btnIngresar;
+   JButton btnIngresar;JButton btnVolver;
    Boolean iguales= new Boolean(false);
    int numUser= 0;
 
@@ -34,19 +34,19 @@ public class InicioSesion extends JFrame implements ActionListener{
    public ArrayList<String> contenidoPass = new ArrayList<>();
 
    Color color1= new Color(7,3,26);//Azul oscuro
- 	 Color color2= new Color(255,203,116);//AMARILLO
-	 Color color3= new Color(79,138,139);// Azul claro
+   Color color2= new Color(255,203,116);//AMARILLO
+   Color color3= new Color(79,138,139);// Azul claro
    Color color4= new Color(244,246,255);// blanco azulado
 
   public InicioSesion(){
-		panel= new JPanel();
-  	panel.setLayout(null);
+    panel= new JPanel();
+    panel.setLayout(null);
     panel.setBackground(color1);
 
     lblN=new JLabel(new ImageIcon(((new ImageIcon("./imagenes/inicio.png")).getImage()).getScaledInstance(170,170,java.awt.Image.SCALE_SMOOTH)));
-   	lblN.setBounds(220,50,170,170);
-   	lblN.setBackground(color2);
-   	lblN.setOpaque(true);
+    lblN.setBounds(220,50,170,170);
+    lblN.setBackground(color2);
+    lblN.setOpaque(true);
 
     fondo=new JLabel("");
     fondo.setBounds(0,450,600,10);
@@ -90,12 +90,16 @@ public class InicioSesion extends JFrame implements ActionListener{
     btnVisible.setBounds(470,280,30,30);
     panel.add(btnVisible);
 
- 		btnIngresar= new JButton("Ingresar");
- 		btnIngresar.setBounds(260,370,100,50);
- 		btnIngresar.setBackground(color4);
+    btnIngresar= new JButton("Ingresar");
+    btnIngresar.setBounds(190,370,100,50);
+    btnIngresar.setBackground(color4);
     btnIngresar.addActionListener(this);
+    btnVolver= new JButton("Volver");
+    btnVolver.setBounds(320,370,100,50);
+    btnVolver.setBackground(color4);
+    btnVolver.addActionListener(this);
 
- 		panel.add(btnIngresar);
+    panel.add(btnIngresar);panel.add(btnVolver);
 
     ItemListener itemListener = new ItemListener(){
       public void itemStateChanged(ItemEvent ItemEvent){
@@ -109,41 +113,45 @@ public class InicioSesion extends JFrame implements ActionListener{
     };
     btnVisible.addItemListener(itemListener);
 
-  	this.add(panel);
+    this.add(panel);
     this.setTitle("Inicio de Sesion  ");
     this.setBounds(100,150,600,500);
-	  this.setVisible(true);
+    this.setVisible(true);
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
   public void actionPerformed(ActionEvent event){
+    if (event.getSource()== this.btnVolver) {
+      Inicio i = new Inicio();
+      this.dispose();
+    }
     if(event.getSource() == this.btnIngresar){
       try{
         File usuarios = new File("./UsuariosContrasennas/Usuarios.txt");
         File claves = new File ("./UsuariosContrasennas/Passwords.txt");
-				File nombres = new File("./UsuariosContrasennas/Nombres.txt");
+        File nombres = new File("./UsuariosContrasennas/Nombres.txt");
 
         FileReader fr1 = new FileReader(usuarios);
         FileReader fr2 = new FileReader(claves);
-				FileReader fr3 = new FileReader(nombres);
+        FileReader fr3 = new FileReader(nombres);
 
         BufferedReader bf1 = new BufferedReader(fr1);
         BufferedReader bf2 = new BufferedReader(fr2);
-				BufferedReader bf3 = new BufferedReader(fr3);
+        BufferedReader bf3 = new BufferedReader(fr3);
 
-				String sCadena1 = bf1.readLine();
+        String sCadena1 = bf1.readLine();
         String sCadena2 = bf2.readLine();
-				String sCadena3 = bf3.readLine();
+        String sCadena3 = bf3.readLine();
         while ((sCadena1!=null)||(sCadena2!=null)||(sCadena3!=null)){
           if(sCadena1.equals(campoNombre.getText())){
             if(sCadena2.equals(campoClave.getText())){
              this.dispose();
              iguales = true;
-						 PerfilUsuario p = new PerfilUsuario(sCadena3,numUser);
+             PerfilUsuario p = new PerfilUsuario(sCadena3,numUser);
             }
           }
           sCadena1 = bf1.readLine();
           sCadena2 = bf2.readLine();
-					sCadena3 = bf3.readLine();
+          sCadena3 = bf3.readLine();
           if(iguales.equals(false)){
             numUser++;
           }

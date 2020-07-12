@@ -133,7 +133,7 @@ public class Registro extends JFrame implements ActionListener{
 					Cliente c = new Cliente();
 					this.dispose();
         }
-      }else{
+      }else if(contenidoUser == null){
         Archivo.CrearArchivo(campoNombre.getText(),"Usuarios.txt");
         Archivo.CrearArchivo(campoClave.getText(),"Passwords.txt");
 				JOptionPane.showMessageDialog(null,"Se ha creado su perfil exitosamente");

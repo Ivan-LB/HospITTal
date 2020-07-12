@@ -167,7 +167,7 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 		try {
 			Socket socket = new Socket("201.170.39.252",9000); //IP del servidor (201.170.39.252)
 			ObjectOutputStream os = new ObjectOutputStream(socket.getOutputStream());
-			Objeto o = new Objeto(camposTxt[0].getText(),camposTxt[1].getText(),camposTxt[2].getText(),camposTxt[3].getText(),camposTxt[4].getText(),camposTxt[5].getText(),camposTxt[6].getText(),camposTxt[7].getText(),camposTxt[8].getText());
+			Objeto o = new Objeto(camposTxt[0].getText(),camposTxt[1].getText(),camposTxt[4].getText(),camposTxt[5].getText(),camposTxt[6].getText(),camposTxt[7].getText(),camposTxt[2].getText(),camposTxt[8].getText(),camposTxt[3].getText());
 			os.writeObject(o);
 			DataInputStream in = new DataInputStream(socket.getInputStream());
 			respuestaServidor = in.readBoolean();

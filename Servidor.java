@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.net.*;
 import java.io.*;
+import java.util.*;
 
 public class Servidor extends JFrame implements Runnable,ActionListener{
   JLabel lblNombre;
@@ -35,8 +36,9 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
   ObjectInputStream is;
   DataOutputStream os;
 
-
-  public Servidor(){
+  public Servidor(ServerSocket server,Socket socket){
+    this.server = server;
+    this.socket = socket;
     panel= new JPanel();
 		panel.setLayout(null);
     panel.setBackground(color1);
@@ -177,10 +179,10 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
       if(e.getSource()== this.btnAceptar){
         r = true;
         enviar();
+
       }
       if(e.getSource()== this.btnRechazar){
         r = false;
-        enviar();
       }
   }
   public boolean getBoolean(){
@@ -188,10 +190,8 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
   }
   public void run(){
     try {
-      server = new ServerSocket(9000); //Socket del servidor
       while(true){
-        socket = server.accept(); //Socket del Cliente
-        is = new ObjectInputStream(socket.getInputStream());
+        is = new ObjectInputStream(this.socket.getInputStream());
         Objeto o = (Objeto)is.readObject();
         lblNombre.setText(o.nombre);
         lblCel.setText(o.cel);
@@ -202,8 +202,8 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
         lblDom.setText(o.dom);
         lblEnfermedades.setText(o.enfermedad);
         lblCurp.setText(o.curp);
-        os = new DataOutputStream(socket.getOutputStream());
-        // os.writeBoolean(getBoolean());
+        os = new DataOutputStream(this.socket.getOutputStream());
+        os.writeBoolean(getBoolean());
         //socket.close();
       }
     }catch (Exception e) {

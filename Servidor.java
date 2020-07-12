@@ -10,33 +10,32 @@ import java.io.*;
 import java.util.*;
 
 public class Servidor extends JFrame implements Runnable,ActionListener{
-  JLabel lblNombre;
-  JLabel lblCel;
-  JLabel lblMail;
-  JLabel lblSangre;
-  JLabel lblGenero;
-  JLabel lblFecha;
-  JLabel lblDom;
-  JLabel lblEnfermedades;
-  JLabel lblCurp;
+  public JLabel lblNombre;
+  public JLabel lblCel;
+  public JLabel lblMail;
+  public JLabel lblSangre;
+  public JLabel lblGenero;
+  public JLabel lblFecha;
+  public JLabel lblDom;
+  public JLabel lblEnfermedades;
+  public JLabel lblCurp;
   JLabel lbl1;JLabel lbl2;JLabel lbl3; JLabel lbl4; JLabel lbl5; JLabel lbl6; JLabel lbl7; JLabel lbl8; JLabel lbl9;
-  JLabel lblDatos;
-  JLabel fondo;
-  JPanel panel;
-  JButton btnRechazar;JButton btnAceptar;
-  Boolean r= new Boolean(false);
-  ArrayList<String> datosPaciente = new ArrayList<>();
+  public JLabel lblDatos;
+  public JLabel fondo;
+  public JPanel panel;
+  public JButton btnRechazar;JButton btnAceptar;
+  public Boolean r= new Boolean(false);
+  public ArrayList<String> datosPaciente = new ArrayList<>();
+  public Thread hilo1;
+  public Color color1= new Color(7,3,26);//Azul oscuro
+  public Color color2= new Color(255,203,116);//AMARILLO
+  public Color color3= new Color(79,138,139);// Azul claro
+  public Color color4= new Color(244,246,255);// blanco azulado
 
-  Thread hilo1;
-  Color color1= new Color(7,3,26);//Azul oscuro
-  Color color2= new Color(255,203,116);//AMARILLO
-  Color color3= new Color(79,138,139);// Azul claro
-  Color color4= new Color(244,246,255);// blanco azulado
-
-  ServerSocket server;
-  Socket socket;
-  ObjectInputStream is;
-  DataOutputStream os;
+  public ServerSocket server;
+  public Socket socket;
+  public ObjectInputStream is;
+  public DataOutputStream os;
 
   public Servidor(ServerSocket server,Socket socket){
     this.server = server;
@@ -200,7 +199,6 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
         // try {
         //   this.socket.close();
         // } catch(Exception exception) { }
-
       }
       if(e.getSource()== this.btnRechazar){
         r = false;
@@ -248,6 +246,5 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
     }catch(Exception e){
       System.out.println("Error al enviar.");
     }
-
   }
 }

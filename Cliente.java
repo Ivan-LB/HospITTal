@@ -12,7 +12,7 @@ import java.awt.Font;
 import java.util.*;
 import javax.sound.sampled.*;
 
-public class Cliente extends JFrame implements ActionListener, Runnable{
+public class Cliente extends JFrame implements ActionListener{
 	public JPanel panel;
  	public JLabel lblNombre;
  	public JLabel lblCel;
@@ -36,9 +36,8 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 	public Color color4= new Color(244,246,255);// blanco azulado
 	public ArrayList<String> nombresU;
 	public int cont;
-
-	Clip clip;
-	Clip chas;
+	public Clip clip;
+	public Clip chas;
 
 	public Cliente(){
 
@@ -46,7 +45,6 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("LikeFluids.WAV").getAbsoluteFile());
        	clip = AudioSystem.getClip();
         clip.open(audioInputStream);
-
 				AudioInputStream audioIO = AudioSystem.getAudioInputStream(new File("chas.WAV").getAbsoluteFile());
 				chas = AudioSystem.getClip();
 				chas.open(audioIO);
@@ -162,7 +160,7 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 		panel.add(btnRegistro);
 		panel.add(fondo);
 
-		hilo1 = new Thread(this);
+		//hilo1 = new Thread(this);
 		this.add(panel);
 		this.setTitle("Registro");
 		this.setBounds(100,150,600,370);
@@ -179,16 +177,16 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 				}
 			}
 			if(cont==0){
-				btnRegistro.setEnabled(false);
-				hilo1.start();
+				btnRegistro.setEnabled(true);
 				clip.start();
+				enviarDatos();
 			}else{
 				JOptionPane.showMessageDialog(null,"Favor de llenar todos los campos");
 				clip.stop();
 			}
 		}
 	}
-	public void run(){
+	public void enviarDatos(){
 		try {
 			Socket socket = new Socket("201.170.39.252",9000); //IP del servidor (201.170.39.252)
 			ObjectOutputStream os = new ObjectOutputStream(socket.getOutputStream());
@@ -203,22 +201,25 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 					}
 					JOptionPane.showMessageDialog(null,"Su formulario fue aceptado por el servidor");
 					nombresU = Archivo.leerTodo("./UsuariosContrasennas/Nombres.txt");
-		      if(nombresU != null){
-		        if(cont==0){
-		          Archivo.CrearArchivoP(o.nombre,"UsuariosContrasennas/Nombres.txt");
-		        }
-		      }else if(nombresU == null){
-		        Archivo.CrearArchivo(o.nombre,"UsuariosContrasennas/Nombres.txt");
-		      }
+			    if(nombresU != null){
+			      if(cont==0){
+			        Archivo.CrearArchivoP(o.nombre,"UsuariosContrasennas/Nombres.txt");
+			      }
+			    }else if(nombresU == null){
+			       Archivo.CrearArchivo(o.nombre,"UsuariosContrasennas/Nombres.txt");
+			    }
+					clip.stop();
 					InicioSesion is = new InicioSesion();
-					//Doctores d = new Doctores(o.nombre);
+					socket.close();
 					this.dispose();
 				}else if(respuestaServidor.equals(false)){
 					JOptionPane.showMessageDialog(null,"Su formulario no fue aceptado por el servidor");
+					clip.stop();
 					btnRegistro.setEnabled(true);
 					for(int i=0; i<camposTxt.length; i++){
 						camposTxt[i].setText("");
 					}
+					break;
 				}
 			}
 		}catch (Exception e) {

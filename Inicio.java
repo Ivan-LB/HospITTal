@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.lang.*;
+import javax.sound.sampled.*;
+import java.io.*;
+
 
 public class Inicio extends JFrame implements ActionListener{
 
@@ -20,8 +23,20 @@ JButton irSin;
 
 Color azul = new Color(7,3,26);
 
+Clip pepe;
+
 public Inicio()
 {
+
+  try {
+    AudioInputStream pl = AudioSystem.getAudioInputStream(new File("chas.WAV").getAbsoluteFile());
+    pepe = AudioSystem.getClip();
+    pepe.open(pl);
+  } catch(Exception ex) {
+      System.out.println("Error with playing sound.");
+      ex.printStackTrace();
+  }
+
   panel = new JPanel();
   panel.setLayout(null);
   panel.setBackground(azul);
@@ -62,11 +77,13 @@ public Inicio()
   {
     if(event.getSource() == this.si)
     {
+      pepe.start();
       Registro r = new Registro();
       this.dispose();
     }
     else if(event.getSource() == this.no)
     {
+      pepe.start();
       InicioSesion is = new InicioSesion();
       this.dispose();
     }

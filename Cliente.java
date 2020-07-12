@@ -36,9 +36,25 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 	public Color color4= new Color(244,246,255);// blanco azulado
 	public ArrayList<String> nombresU;
 	public int cont;
-	public Clip clip;
+
+	Clip clip;
+	Clip chas;
 
 	public Cliente(){
+
+		try {
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("LikeFluids.WAV").getAbsoluteFile());
+       	clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+
+				AudioInputStream audioIO = AudioSystem.getAudioInputStream(new File("chas.WAV").getAbsoluteFile());
+				chas = AudioSystem.getClip();
+				chas.open(audioIO);
+    } catch(Exception ex) {
+        System.out.println("Error with playing sound.");
+        ex.printStackTrace();
+    }
+
 		panel= new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(color1);
@@ -156,6 +172,7 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 	public void actionPerformed(ActionEvent event){
 		if(event.getSource() == this.btnRegistro){
 			int cont = 0;
+			chas.start();
 			for(int i=0; i<camposTxt.length; i++) {
 				if(camposTxt[i].getText().isEmpty()){
 					cont++;
@@ -163,10 +180,11 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 			}
 			if(cont==0){
 				btnRegistro.setEnabled(false);
-				playSound("./LikeFluids.wav");
 				hilo1.start();
+				clip.start();
 			}else{
 				JOptionPane.showMessageDialog(null,"Favor de llenar todos los campos");
+				clip.stop();
 			}
 		}
 	}
@@ -205,28 +223,7 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 			}
 		}catch (Exception e) {
 			System.out.println("Error en la conexion");
+			clip.stop();
 		}
 	}
-
-	public void playSound(String direccion) {
-	try {
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(direccion).getAbsoluteFile());
-			clip = AudioSystem.getClip();
-			clip.open(audioInputStream);
-			clip.start();
-	} catch(Exception ex) {
-			System.out.println("Error with playing sound.");
-			ex.printStackTrace();
-	}
-}
-
-public void stopSound() {
-	try {
-			clip.stop();
-	} catch(Exception ex) {
-			System.out.println("Error with playing sound.");
-			ex.printStackTrace();
-	}
-}
-
 }

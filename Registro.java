@@ -10,6 +10,8 @@ import java.lang.String;
 import java.util.*;
 import javax.swing.JOptionPane;
 import java.io.FileNotFoundException;
+import javax.sound.sampled.*;
+import java.io.*;
 
 
 
@@ -35,7 +37,19 @@ public class Registro extends JFrame implements ActionListener{
 	 Color color3= new Color(79,138,139);// Azul claro
    Color color4= new Color(244,246,255);// blanco azulado
 
+	 Clip pepe;
+
   public Registro(){
+
+		try {
+			AudioInputStream pl = AudioSystem.getAudioInputStream(new File("chas.WAV").getAbsoluteFile());
+			pepe = AudioSystem.getClip();
+			pepe.open(pl);
+		} catch(Exception ex) {
+				System.out.println("Error with playing sound.");
+				ex.printStackTrace();
+		}
+
 		panel= new JPanel();
   	panel.setLayout(null);
     panel.setBackground(color1);
@@ -118,6 +132,7 @@ public class Registro extends JFrame implements ActionListener{
   }
   public void actionPerformed(ActionEvent event){
   	if(event.getSource()== this.btnRegistro){
+			pepe.start();
       contenidoUser = Archivo.leerTodo("./UsuariosContrasennas/Usuarios.txt");
       if(contenidoUser != null){
         for (int i=0;i<contenidoUser.size() ; i++) {
@@ -141,6 +156,7 @@ public class Registro extends JFrame implements ActionListener{
 				this.dispose();
       }
   	}else	if(event.getSource()== this.btnRegresar){
+			pepe.start();
       this.dispose();
   	}
   }

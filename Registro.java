@@ -127,15 +127,15 @@ public class Registro extends JFrame implements ActionListener{
           }
         }
         if(cont==0){
-          Archivo.CrearArchivoP(campoNombre.getText(),"Usuarios.txt");
-          Archivo.CrearArchivoP(campoClave.getText(),"Passwords.txt");
+          Archivo.CrearArchivoP(campoNombre.getText(),"UsuariosContrasennas/Usuarios.txt");
+          Archivo.CrearArchivoP(campoClave.getText(),"UsuariosContrasennas/Passwords.txt");
 					JOptionPane.showMessageDialog(null,"Se ha creado su perfil exitosamentea");
 					Cliente c = new Cliente();
 					this.dispose();
         }
       }else if(contenidoUser == null){
-        Archivo.CrearArchivo(campoNombre.getText(),"Usuarios.txt");
-        Archivo.CrearArchivo(campoClave.getText(),"Passwords.txt");
+        Archivo.CrearArchivo(campoNombre.getText(),"UsuariosContrasennas/Usuarios.txt");
+        Archivo.CrearArchivo(campoClave.getText(),"UsuariosContrasennas/Passwords.txt");
 				JOptionPane.showMessageDialog(null,"Se ha creado su perfil exitosamente");
 				Cliente c = new Cliente();
 				this.dispose();

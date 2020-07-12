@@ -184,10 +184,10 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 					nombresU = Archivo.leerTodo("./UsuariosContrasennas/Nombres.txt");
 		      if(nombresU != null){
 		        if(cont==0){
-		          Archivo.CrearArchivoP(o.nombre,"Nombres.txt");
+		          Archivo.CrearArchivoP(o.nombre,"UsuariosContrasennas/Nombres.txt");
 		        }
 		      }else if(nombresU == null){
-		        Archivo.CrearArchivo(o.nombre,"Nombres.txt");
+		        Archivo.CrearArchivo(o.nombre,"UsuariosContrasennas/Nombres.txt");
 		      }
 					Doctores d = new Doctores(o.nombre);
 					this.dispose();

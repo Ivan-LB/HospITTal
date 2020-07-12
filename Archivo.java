@@ -29,7 +29,7 @@ public class Archivo
 	public static void CrearArchivo(String contenido, String nombre){
 		try
 		{
-			String ruta = "./UsuariosContrasennas/" + nombre;
+			String ruta = "./" + nombre;
 			File file = new File(ruta);
 			if(!file.exists())
 			{
@@ -70,7 +70,7 @@ public class Archivo
 	{
 		try
 		{
-			String ruta = "./UsuariosContrasennas/" + nombre;
+			String ruta = "./" + nombre;
 			File file = new File(ruta);
 
 			if(!file.exists())

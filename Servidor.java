@@ -179,10 +179,22 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
       if(e.getSource()== this.btnAceptar){
         r = true;
         enviar();
-
+        try {
+          this.socket.close();
+        } catch(Exception exception) { }
       }
       if(e.getSource()== this.btnRechazar){
         r = false;
+        enviar();
+        lblNombre.setText("");
+        lblCel.setText("");
+        lblMail.setText("");
+        lblSangre.setText("");
+        lblGenero.setText("");
+        lblFecha.setText("");
+        lblDom.setText("");
+        lblEnfermedades.setText("");
+        lblCurp.setText("");
       }
   }
   public boolean getBoolean(){

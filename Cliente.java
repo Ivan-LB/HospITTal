@@ -10,6 +10,7 @@ import java.io.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.*;
+import javax.sound.sampled.*;
 
 public class Cliente extends JFrame implements ActionListener, Runnable{
 	public JPanel panel;
@@ -35,6 +36,7 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 	public Color color4= new Color(244,246,255);// blanco azulado
 	public ArrayList<String> nombresU;
 	public int cont;
+	public Clip clip;
 
 	public Cliente(){
 		panel= new JPanel();
@@ -161,6 +163,7 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 			}
 			if(cont==0){
 				btnRegistro.setEnabled(false);
+				playSound("./LikeFluids.wav");
 				hilo1.start();
 			}else{
 				JOptionPane.showMessageDialog(null,"Favor de llenar todos los campos");
@@ -204,4 +207,26 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 			System.out.println("Error en la conexion");
 		}
 	}
+
+	public void playSound(String direccion) {
+	try {
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(direccion).getAbsoluteFile());
+			clip = AudioSystem.getClip();
+			clip.open(audioInputStream);
+			clip.start();
+	} catch(Exception ex) {
+			System.out.println("Error with playing sound.");
+			ex.printStackTrace();
+	}
+}
+
+public void stopSound() {
+	try {
+			clip.stop();
+	} catch(Exception ex) {
+			System.out.println("Error with playing sound.");
+			ex.printStackTrace();
+	}
+}
+
 }

@@ -1,5 +1,6 @@
 package aplicacion.cliente;
 
+import aplicacion.utilerias.Archivo;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.image.*;
@@ -23,6 +24,7 @@ JLabel cita;
 JLabel itt;
 JLabel lugarFav;
 JLabel lugar;
+ArrayList<String> fechaCitas= new ArrayList<>();
 
 Color azulOscuro= new Color(7,3,26);//Azul oscuro
 Color amarillo= new Color(255,203,116);//AMARILLO
@@ -34,14 +36,14 @@ JButton salir;
 JButton doctores;
 
 String nombreMio;
-
-	public PerfilUsuario(String nombreUsuario)
+int numUsers;
+	public PerfilUsuario(String nombreUsuario, int numUser)
 	{
 		panel = new JPanel();
 		panel.setLayout(null);
 
     this.nombreMio = nombreUsuario;
-
+    this.numUsers = numUsers;
 		panel.setBackground(azulOscuro);
 
 		nombre = new JLabel(nombreUsuario);
@@ -71,12 +73,22 @@ String nombreMio;
 		proximaCita.setOpaque(false);
 		proximaCita.setForeground(Color.white);
 
-    cita = new JLabel("   -  El perro pinche Lunes");
-    cita.setFont(new Font("Serif", Font.PLAIN, 20));
-    cita.setBounds(50,325,400,22);
-    cita.setOpaque(false);
-    cita.setForeground(Color.white);
-
+    String ruta = "./ArchivosClientes/"+nombreUsuario;
+    fechaCitas = Archivo.leerTodo(ruta);
+    if(fechaCitas != null){
+      String info = fechaCitas.get(numUsers);
+      cita = new JLabel(info);
+      cita.setFont(new Font("Serif", Font.PLAIN, 20));
+      cita.setBounds(50,325,400,22);
+      cita.setOpaque(false);
+      cita.setForeground(Color.white);
+    }else{
+      cita = new JLabel("No tiene citas de momento");
+      cita.setFont(new Font("Serif", Font.PLAIN, 20));
+      cita.setBounds(50,325,400,22);
+      cita.setOpaque(false);
+      cita.setForeground(Color.white);
+    }
 		linea = new JLabel();
 		linea.setBounds(45,275,600,5);
 		linea.setOpaque(true);
@@ -136,7 +148,7 @@ String nombreMio;
 public void actionPerformed(ActionEvent event){
 
 			if(event.getSource() == this.salir){
-					System.exit(0);
+				System.exit(0);
 			}
       else if(event.getSource() == this.doctores)
       {

@@ -139,7 +139,8 @@ public class InicioSesion extends JFrame implements ActionListener{
             if(sCadena2.equals(campoClave.getText())){
              this.dispose();
              iguales = true;
-             Doctores d = new Doctores(sCadena3);
+						 PerfilUsuario p = new PerfilUsuario(sCadena3,numUser);
+             //Doctores d = new Doctores(sCadena3);
             }
           }
           sCadena1 = bf1.readLine();

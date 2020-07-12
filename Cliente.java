@@ -189,7 +189,8 @@ public class Cliente extends JFrame implements ActionListener, Runnable{
 		      }else if(nombresU == null){
 		        Archivo.CrearArchivo(o.nombre,"UsuariosContrasennas/Nombres.txt");
 		      }
-					Doctores d = new Doctores(o.nombre);
+					InicioSesion is = new InicioSesion();
+					//Doctores d = new Doctores(o.nombre);
 					this.dispose();
 				}else if(respuestaServidor.equals(false)){
 					JOptionPane.showMessageDialog(null,"Su formulario no fue aceptado por el servidor");

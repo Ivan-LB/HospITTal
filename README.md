@@ -1,5 +1,5 @@
 <h1> HospITTal </h1>
-![](https://github.com/Ivan-LB/HospITTal/blob/master/imagenes/logo1.png)
+<img src=https://github.com/Ivan-LB/HospITTal/blob/master/imagenes/logo1.png>
 <h2> ¿Qué es HospITTal? </h2>
 <p>Esta es una aplicacion para un hospital que permite al usuario registrarse y agendar citas desde la comodidad de su hogar.<br>
 Una de las funciones relevantes es que se guardan los formularios clinicos y el operador del servidor puede acceder a ellos<br></p>

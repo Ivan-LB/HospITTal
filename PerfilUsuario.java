@@ -10,6 +10,7 @@ import java.awt.event.*;
 import java.lang.*;
 import java.net.*;
 import java.util.*;
+import javax.sound.sampled.*;
 
 class PerfilUsuario extends JFrame implements ActionListener{
 	//OBJETOS
@@ -37,8 +38,21 @@ class PerfilUsuario extends JFrame implements ActionListener{
 
 	public String nombreMio;
 	public int numUsers;
+
+	Clip pepe;
+
 	public PerfilUsuario(String nombreUsuario, int numUser)
 	{
+
+		try {
+			AudioInputStream pl = AudioSystem.getAudioInputStream(new File("chas.WAV").getAbsoluteFile());
+			pepe = AudioSystem.getClip();
+			pepe.open(pl);
+		} catch(Exception ex) {
+				System.out.println("Error with playing sound.");
+				ex.printStackTrace();
+		}
+
 		panel = new JPanel();
 		panel.setLayout(null);
 
@@ -151,6 +165,7 @@ class PerfilUsuario extends JFrame implements ActionListener{
 				}
 	      else if(event.getSource() == this.doctores)
 	      {
+					pepe.start();
 	        Doctores doc = new Doctores(nombreMio,numUsers);
 	        this.dispose();
 	      }

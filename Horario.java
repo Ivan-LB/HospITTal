@@ -11,6 +11,7 @@ import java.net.*;
 import java.util.*;
 import aplicacion.utilerias.Archivo;
 import aplicacion.utilerias.ColoredToggleButton;
+import javax.sound.sampled.*;
 
 class Horario extends JFrame implements ActionListener,ItemListener{
 	public JPanel panel;
@@ -43,8 +44,20 @@ class Horario extends JFrame implements ActionListener,ItemListener{
 	public String paciente;
 	public String pacienteC;
 	public int numUsers;
+	Clip pepe;
+
 	public Horario(String nombreDoctor, String paciente, int numUser)
 	{
+
+		try {
+			AudioInputStream pl = AudioSystem.getAudioInputStream(new File("chas.WAV").getAbsoluteFile());
+			pepe = AudioSystem.getClip();
+			pepe.open(pl);
+		} catch(Exception ex) {
+				System.out.println("Error with playing sound.");
+				ex.printStackTrace();
+		}
+
 		this.nombreDoctor=nombreDoctor;
 		this.paciente = paciente;
 		this.numUsers = numUser;
@@ -258,6 +271,7 @@ class Horario extends JFrame implements ActionListener,ItemListener{
 
 public void actionPerformed(ActionEvent event){
 		 	if(event.getSource() == this.btnEnviar){
+				pepe.start();
 				switch (numeroEnviar)
 				{
 					case 0:
@@ -358,7 +372,7 @@ public void actionPerformed(ActionEvent event){
 				}
 				if (JOptionPane.showConfirmDialog(null, "Su cita ha sido agenda para "+fechaFinal+"\nCon el doctor/a "+nombreDoctor, "Cita Agendada",
 				   JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-
+						 	pepe.start();
 					disableAll();
 					btnEnviar.setEnabled(false);
 					salir.setVisible(true);
@@ -406,6 +420,7 @@ public void actionPerformed(ActionEvent event){
 			}
 			else if(event.getSource() == this.salir){
 				PerfilUsuario pu = new PerfilUsuario(paciente,numUsers);
+				pepe.start();
 				this.dispose();
 			}
 }

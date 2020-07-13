@@ -11,7 +11,7 @@ import java.util.*;
 import java.io.*;
 import javax.swing.JOptionPane;
 import java.io.FileNotFoundException;
-
+import javax.sound.sampled.*;
 
 
 public class InicioSesion extends JFrame implements ActionListener{
@@ -29,6 +29,8 @@ public class InicioSesion extends JFrame implements ActionListener{
    Boolean iguales= new Boolean(false);
    int numUser= 0;
 
+   Clip pepe;
+
    JToggleButton btnVisible;
    public ArrayList<String> contenidoUser = new ArrayList<>();
    public ArrayList<String> contenidoPass = new ArrayList<>();
@@ -39,6 +41,16 @@ public class InicioSesion extends JFrame implements ActionListener{
    Color color4= new Color(244,246,255);// blanco azulado
 
   public InicioSesion(){
+
+    try {
+      AudioInputStream pl = AudioSystem.getAudioInputStream(new File("chas.WAV").getAbsoluteFile());
+      pepe = AudioSystem.getClip();
+      pepe.open(pl);
+    } catch(Exception ex) {
+        System.out.println("Error with playing sound.");
+        ex.printStackTrace();
+    }
+
     panel= new JPanel();
     panel.setLayout(null);
     panel.setBackground(color1);
@@ -122,10 +134,12 @@ public class InicioSesion extends JFrame implements ActionListener{
   public void actionPerformed(ActionEvent event){
     if (event.getSource()== this.btnVolver) {
       Inicio i = new Inicio();
+      pepe.start();
       this.dispose();
     }
     if(event.getSource() == this.btnIngresar){
       try{
+        pepe.start();
         File usuarios = new File("./UsuariosContrasennas/Usuarios.txt");
         File claves = new File ("./UsuariosContrasennas/Passwords.txt");
         File nombres = new File("./UsuariosContrasennas/Nombres.txt");

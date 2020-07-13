@@ -3,6 +3,8 @@ package aplicacion.cliente;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.sound.sampled.*;
+import java.io.*;
 
 public class Doctores extends JFrame implements ActionListener{
 
@@ -42,7 +44,19 @@ public class Doctores extends JFrame implements ActionListener{
   public Color color4= new Color(244,246,255);// blanco azulado
 	public int numUsers;
 
+	Clip pepe;
+
 	public Doctores(String paciente, int numUser){
+
+		try {
+			AudioInputStream pl = AudioSystem.getAudioInputStream(new File("chas.WAV").getAbsoluteFile());
+			pepe = AudioSystem.getClip();
+			pepe.open(pl);
+		} catch(Exception ex) {
+				System.out.println("Error with playing sound.");
+				ex.printStackTrace();
+		}
+
 			this.paciente = paciente;
 			this.numUsers = numUser;
     	panel = new JPanel();
@@ -271,18 +285,22 @@ public class Doctores extends JFrame implements ActionListener{
   		lbl4.setVisible(t4);doc4Nombre.setVisible(t4);doc4Esp.setVisible(t4);doc4Turno.setVisible(t4);doc4Cedula.setVisible(t4);doc4Escuela.setVisible(t4);
   	}
     if (event.getSource()== this.btnAC1) {
+			pepe.start();
 			Horario h = new Horario(doc1Nombre.getText(),this.paciente,numUsers);
 			this.dispose();
     }
     if (event.getSource()== this.btnAC2) {
+			pepe.start();
 			Horario h = new Horario(doc2Nombre.getText(),this.paciente,numUsers);
 			this.dispose();
     }
     if (event.getSource()== this.btnAC3) {
+			pepe.start();
 			Horario h = new Horario(doc3Nombre.getText(),this.paciente,numUsers);
 			this.dispose();
     }
     if (event.getSource()== this.btnAC4) {
+			pepe.start();
 			Horario h = new Horario(doc4Nombre.getText(),this.paciente,numUsers);
 			this.dispose();
     }

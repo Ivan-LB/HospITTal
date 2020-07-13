@@ -1,4 +1,4 @@
-//package aplicacion.servidor;
+package aplicacion.servidor;
 
 import aplicacion.utilerias.Archivo;
 import java.awt.*;
@@ -10,6 +10,7 @@ import java.awt.event.*;
 import java.lang.*;
 import java.net.*;
 import java.util.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 class ControlDoctores extends JFrame implements ActionListener{
 
@@ -67,10 +68,11 @@ class ControlDoctores extends JFrame implements ActionListener{
 		proximaCita.setOpaque(false);
 		proximaCita.setForeground(Color.white);
 
-    lugar = new JTextArea("Seleccione un paciente:");
+    lugar = new JTextArea();
     lugar.setFont(new Font("Serif", Font.PLAIN, 15));
     lugar.setBounds(50,500,400,200);
     lugar.setOpaque(false);
+		lugar.setLineWrap(true);
     lugar.setForeground(Color.white);
 
 		linea = new JLabel();
@@ -95,7 +97,7 @@ class ControlDoctores extends JFrame implements ActionListener{
 		salir.setOpaque(false);
 		salir.setForeground(Color.BLACK);
 
-    doctores = new JButton("Abrir");
+    doctores = new JButton("Abrir Expedientes");
     doctores.setFont(new Font("Serif", Font.PLAIN, 11));
     doctores.setBounds(150,325,200,40);
     doctores.setOpaque(true);
@@ -129,31 +131,24 @@ class ControlDoctores extends JFrame implements ActionListener{
 
 	}
 	public void actionPerformed(ActionEvent event){
-
 				if(event.getSource() == this.salir){
-					System.exit(0);
+					this.dispose();
 				}
-	      else if(event.getSource() == this.doctores)
-	      {
-					JFileChooser fc=new JFileChooser();
-					fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-					int seleccion=fc.showOpenDialog(panel);
-					if(seleccion==JFileChooser.APPROVE_OPTION){
-					    File fichero=fc.getSelectedFile();
-
-					    try(FileReader fr=new FileReader(fichero)){
-					        String cadena="";
-					        int valor=fr.read();
-					        while(valor!=-1){
-					            cadena=cadena+(char)valor;
-					            valor=fr.read();
-					        }
-					        lugar.setText(cadena);
-					    } catch (IOException e1) {
-					        e1.printStackTrace();
-					    }
-					}
-	      }
+	      else if(event.getSource() == this.doctores){
+					String nombre_archivo_guardar = "";
+					JFileChooser fc = new JFileChooser();
+					FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de Texto","txt");
+					fc.setFileFilter(filter);
+					fc.setCurrentDirectory(new java.io.File("./Expedientes"));
+				if(fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+				  File fichero=fc.getSelectedFile();
+					nombre_archivo_guardar = fichero.getAbsolutePath();
+				}
+				ArrayList<String> contenido = new ArrayList<String>();
+				contenido = Archivo.leerTodo(nombre_archivo_guardar);
+				for(int i=0; i<contenido.size(); i++) {
+					lugar.append(contenido.get(i)+"\n");
+				}
+		 }
 	}
-
 }

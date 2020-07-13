@@ -1,8 +1,0 @@
-Nombre del paciente: Jovanj
-Celular del paciente: hkjh
-E-mail del paciente: hkjh
-Tipo de Sangre: kjhj
-Genero del paciente: jkhjkkjh
-Domicilio del paciente: jhkjh
-Enfermedades Cronicas: kjhkj
-CURP del paciente: jkhkjjk

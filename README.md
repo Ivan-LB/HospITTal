@@ -21,12 +21,12 @@ cita, en el servidor se pueden checar los datos del paciente y las citas que ten
 </ul>
 <p>Para el manejo de archivos</p>
 <ul>
-<li> Util</li>
-<li> IO</li>
+<li> java.util</li>
+<li> java.IO</li>
 </ul>
 <p>Para la creacion del servidor</p>
 <ul>
-<li> Net</li>
+<li> java.net</li>
 </ul>
 <h2> Iniciar el programa </h2>
 <p> Siendo el cliente lo que debe hacer es abrir la cmd y posicionarse en la ruta donde descargo el proyecto y escribir lo siguiente:</p>

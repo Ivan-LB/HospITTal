@@ -39,6 +39,7 @@ public class Cliente extends JFrame implements ActionListener{
 	public Clip clip;
 	public Clip chas;
 	public JTextField ip;
+	public JLabel lblIP;
 
 	public Cliente(){
 
@@ -58,13 +59,19 @@ public class Cliente extends JFrame implements ActionListener{
 		panel.setLayout(null);
 		panel.setBackground(color1);
 
-		ip = new JTextField("Servidor IP");
-		ip.setBounds(10,10,100,12);
+		lblIP = new JLabel("IP",JLabel.CENTER);
+		lblIP.setBounds(330,250,40,30);
+		lblIP.setBackground(color3);
+		lblIP.setOpaque(true);
+		lblIP.setForeground(Color.white);
+
+		ip = new JTextField("");
+		ip.setBounds(370,250,200,30);
 		ip.setBackground(Color.white);
 		ip.setOpaque(true);
 
 		fondo=new JLabel("");
-		fondo.setBounds(0,320,600,10);
+		fondo.setBounds(0,310,600,10);
 		fondo.setBackground(color2);
 		fondo.setOpaque(true);
 
@@ -165,6 +172,8 @@ public class Cliente extends JFrame implements ActionListener{
 		panel.add(lblNombre);panel.add(lblCel);panel.add(lblDom);panel.add(lblCurp);panel.add(lblMail);panel.add(lblSangre);panel.add(lblGenero);panel.add(lblEnfermedad);panel.add(lblFecha);
 		panel.add(btnRegistro);
 		panel.add(fondo);
+		panel.add(ip);
+		panel.add(lblIP);
 
 		//hilo1 = new Thread(this);
 		this.add(panel);

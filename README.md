@@ -1,5 +1,8 @@
 <h1> HospITTal </h1>
-<img src=https://github.com/Ivan-LB/HospITTal/blob/master/imagenes/logo1.png>
+<img src=https://github.com/Ivan-LB/HospITTal/blob/master/imagenes/logo1.png
+  alt="Logo del Programa"
+  tittle="HospITTal"
+>
 <h2> ¿Qué es HospITTal? </h2>
 <p>Esta es una aplicacion para un hospital que permite al usuario registrarse y agendar citas desde la comodidad de su hogar.<br>
 Las funciones del servidor son simples: aceptar o rechazar a los clientes y poder revisar los expedientes de los usuarios<br></p>
@@ -38,3 +41,4 @@ cita, en el servidor se pueden checar los datos del paciente y las citas que ten
 <li> <strong>SublimeText3</strong>-<em>Editor de texto</em></li>
 <li> <strong>Atom</strong>-<em>Editor de texto colaborativo</em></li>
 </ul>
+<h2> Preview del Programa</h2>

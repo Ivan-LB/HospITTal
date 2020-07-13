@@ -21,6 +21,8 @@ public class Inicio extends JFrame implements ActionListener{
   public Color azul = new Color(7,3,26);
   public Clip pepe;
   public ArrayList<String> arrayUsers = new ArrayList<>();
+  public Color color2= new Color(255,203,116);//AMARILLO
+  public JLabel lbl[]= new JLabel [4];
 
   public Inicio()
   {
@@ -35,6 +37,27 @@ public class Inicio extends JFrame implements ActionListener{
     panel = new JPanel();
     panel.setLayout(null);
     panel.setBackground(azul);
+
+    lbl[0]= new JLabel("");
+    lbl[0].setBounds(0,0,10,520);
+    lbl[0].setBackground(color2);
+    lbl[0].setOpaque(true);
+
+    lbl[1]= new JLabel("");
+    lbl[1].setBounds(475,0,10,520);
+    lbl[1].setBackground(color2);
+    lbl[1].setOpaque(true);
+
+    lbl[2]= new JLabel("");
+    lbl[2].setBounds(0,0,500,10);
+    lbl[2].setBackground(color2);
+    lbl[2].setOpaque(true);
+
+    lbl[3]= new JLabel("");
+    lbl[3].setBounds(0,475,500,10);
+    lbl[3].setBackground(color2);
+    lbl[3].setOpaque(true);
+
 
     titulo = new JLabel(new ImageIcon(((new ImageIcon("./imagenes/logo1.png")).getImage()).getScaledInstance(384,216,java.awt.Image.SCALE_SMOOTH)));
     titulo.setBounds(0,50,500,216);
@@ -64,6 +87,7 @@ public class Inicio extends JFrame implements ActionListener{
     panel.add(pregunta);
     panel.add(si);
     panel.add(no);
+    panel.add(lbl[0]);panel.add(lbl[1]);panel.add(lbl[2]);panel.add(lbl[3]);
 
     this.add(panel);
 

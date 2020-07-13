@@ -54,7 +54,7 @@ public class Inicio extends JFrame implements ActionListener{
     lbl[2].setOpaque(true);
 
     lbl[3]= new JLabel("");
-    lbl[3].setBounds(0,475,500,10);
+    lbl[3].setBounds(0,465,500,10);
     lbl[3].setBackground(color2);
     lbl[3].setOpaque(true);
 

@@ -118,9 +118,7 @@ class ControlDoctores extends JFrame implements ActionListener{
 
 		salir.addActionListener(this);
     doctores.addActionListener(this);
-
 		this.add(panel);
-
 		SwingUtilities.updateComponentTreeUI(this);
 		this.pack();
 		this.setTitle("Centro De Control");
@@ -128,27 +126,33 @@ class ControlDoctores extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setLayout(null);
-
 	}
 	public void actionPerformed(ActionEvent event){
 				if(event.getSource() == this.salir){
-					this.dispose();
+					System.exit(0);
+					//this.dispose();
 				}
 	      else if(event.getSource() == this.doctores){
-					String nombre_archivo_guardar = "";
-					JFileChooser fc = new JFileChooser();
-					FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de Texto","txt");
-					fc.setFileFilter(filter);
-					fc.setCurrentDirectory(new java.io.File("./Expedientes"));
-				if(fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
-				  File fichero=fc.getSelectedFile();
-					nombre_archivo_guardar = fichero.getAbsolutePath();
-				}
-				ArrayList<String> contenido = new ArrayList<String>();
-				contenido = Archivo.leerTodo(nombre_archivo_guardar);
-				for(int i=0; i<contenido.size(); i++) {
-					lugar.append(contenido.get(i)+"\n");
-				}
+					lugar.setText("");
+					try {
+						String nombre_archivo_guardar = "";
+						JFileChooser fc = new JFileChooser();
+						FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de Texto","txt");
+						fc.setFileFilter(filter);
+						fc.setCurrentDirectory(new java.io.File("./Expedientes"));
+						if(fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+						  File fichero=fc.getSelectedFile();
+							nombre_archivo_guardar = fichero.getAbsolutePath();
+						}
+						ArrayList<String> contenido = new ArrayList<String>();
+						contenido = Archivo.leerTodo(nombre_archivo_guardar);
+						for(int i=0; i<contenido.size(); i++) {
+							lugar.append(contenido.get(i)+"\n");
+						}
+					} catch(Exception e) {
+						JOptionPane.showMessageDialog(null,"No se selecciono un expediente");
+					}
+
 		 }
 	}
 }

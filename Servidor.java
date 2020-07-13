@@ -250,7 +250,7 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
         //socket.close();
       }
     }catch (Exception e) {
-      e.printStackTrace();
+      JOptionPane.showMessageDialog(null,"Se corto la conexion con el cliente");
     }
   }
   public void enviar()

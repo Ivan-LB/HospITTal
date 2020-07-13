@@ -401,7 +401,7 @@ public void actionPerformed(ActionEvent event){
 			}
 			else if(event.getSource() == this.salir){
 				PerfilUsuario pu = new PerfilUsuario(paciente,numUsers);
-					System.exit(0);
+				this.dispose();
 			}
 }
 public void disableOthers(int number){

@@ -218,6 +218,12 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
         lblDom.setText("");
         lblEnfermedades.setText("");
         lblCurp.setText("");
+        try{
+          Thread.sleep(1000);
+        }catch (Exception ed) {
+          System.out.println("Error en el sleep");
+        }
+        this.dispose();
       }
   }
   public boolean getBoolean(){

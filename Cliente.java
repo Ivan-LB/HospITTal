@@ -38,6 +38,7 @@ public class Cliente extends JFrame implements ActionListener{
 	public int cont;
 	public Clip clip;
 	public Clip chas;
+	public JTextField ip;
 
 	public Cliente(){
 
@@ -56,6 +57,11 @@ public class Cliente extends JFrame implements ActionListener{
 		panel= new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(color1);
+
+		ip = new JTextField("Servidor IP");
+		ip.setBounds(10,10,100,12);
+		ip.setBackground(Color.white);
+		ip.setOpaque(true);
 
 		fondo=new JLabel("");
 		fondo.setBounds(0,320,600,10);
@@ -179,16 +185,16 @@ public class Cliente extends JFrame implements ActionListener{
 			if(cont==0){
 				btnRegistro.setEnabled(true);
 				clip.start();
-				enviarDatos();
+				enviarDatos(ip.getText());
 			}else{
 				JOptionPane.showMessageDialog(null,"Favor de llenar todos los campos");
 				clip.stop();
 			}
 		}
 	}
-	public void enviarDatos(){
+	public void enviarDatos(String ip){
 		try {
-			Socket socket = new Socket("201.170.39.252",9000); //IP del servidor (201.170.39.252)
+			Socket socket = new Socket(ip,9000); //IP del servidor (201.170.39.252)
 			ObjectOutputStream os = new ObjectOutputStream(socket.getOutputStream());
 			Objeto o = new Objeto(camposTxt[0].getText(),camposTxt[1].getText(),camposTxt[4].getText(),camposTxt[5].getText(),camposTxt[6].getText(),camposTxt[7].getText(),camposTxt[2].getText(),camposTxt[8].getText(),camposTxt[3].getText());
 			os.writeObject(o);

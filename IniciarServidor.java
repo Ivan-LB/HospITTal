@@ -9,9 +9,9 @@ import java.io.*;
 import java.util.ArrayList;
 
 class IniciarServidor{
-
+  public static ServerSocket server;
+  //public ArrayList<Socket> clientes = new ArrayList<Socket>();
   public static void main(String[] args){
-    ServerSocket server;
 		try{
 			server = new ServerSocket(9000);
       while(true){
@@ -21,6 +21,5 @@ class IniciarServidor{
 		}catch(Exception e){
       e.printStackTrace();
     }
-
   }
 }

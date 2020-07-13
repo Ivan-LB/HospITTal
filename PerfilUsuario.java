@@ -12,31 +12,31 @@ import java.net.*;
 import java.util.*;
 
 class PerfilUsuario extends JFrame implements ActionListener{
-//OBJETOS
-JPanel panel;
-JLabel nombre;
-JLabel paciente;
-JLabel h1;
-JLabel proximaCita;
-JLabel linea;
-JLabel linea2;
-JLabel cita;
-JLabel itt;
-JLabel lugarFav;
-JLabel lugar;
-ArrayList<String> fechaCitas= new ArrayList<>();
+	//OBJETOS
+	public JPanel panel;
+	public JLabel nombre;
+	public JLabel paciente;
+	public JLabel h1;
+	public JLabel proximaCita;
+	public JLabel linea;
+	public JLabel linea2;
+	public JLabel cita;
+	public JLabel itt;
+	public JLabel lugarFav;
+	public JLabel lugar;
+	public ArrayList<String> fechaCitas= new ArrayList<>();
 
-Color azulOscuro= new Color(7,3,26);//Azul oscuro
-Color amarillo= new Color(255,203,116);//AMARILLO
-Color color3= new Color(79,138,139);// Azul claro
-Color color4= new Color(244,246,255);// blanco azulado
+	public Color azulOscuro= new Color(7,3,26);//Azul oscuro
+	public Color amarillo= new Color(255,203,116);//AMARILLO
+	public Color color3= new Color(79,138,139);// Azul claro
+	public Color color4= new Color(244,246,255);// blanco azulado
 
-JButton salir;
+	public JButton salir;
 
-JButton doctores;
+	public JButton doctores;
 
-String nombreMio;
-int numUsers;
+	public String nombreMio;
+	public int numUsers;
 	public PerfilUsuario(String nombreUsuario, int numUser)
 	{
 		panel = new JPanel();
@@ -144,17 +144,16 @@ int numUsers;
 		this.setLayout(null);
 
 	}
+	public void actionPerformed(ActionEvent event){
 
-public void actionPerformed(ActionEvent event){
-
-			if(event.getSource() == this.salir){
-				System.exit(0);
-			}
-      else if(event.getSource() == this.doctores)
-      {
-        Doctores doc = new Doctores(nombreMio,numUsers);
-        this.dispose();
-      }
-}
+				if(event.getSource() == this.salir){
+					System.exit(0);
+				}
+	      else if(event.getSource() == this.doctores)
+	      {
+	        Doctores doc = new Doctores(nombreMio,numUsers);
+	        this.dispose();
+	      }
+	}
 
 }

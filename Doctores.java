@@ -6,41 +6,41 @@ import java.awt.event.*;
 
 public class Doctores extends JFrame implements ActionListener{
 
-	JButton btnDoc1;
-	JButton btnDoc2;
-	JButton btnDoc3;
-	JButton btnDoc4;
-  JButton btnAC1;JButton btnAC2;JButton btnAC3;JButton btnAC4;
-	JPanel panel;
-  JLabel pl;
-	String paciente;
+	public JButton btnDoc1;
+	public JButton btnDoc2;
+	public JButton btnDoc3;
+	public JButton btnDoc4;
+  public JButton btnAC1;
+	public JButton btnAC2;
+	public JButton btnAC3;
+	public JButton btnAC4;
+	public JPanel panel;
+  public JLabel pl;
+	public String paciente;
 
 
-	boolean t1= false;
-	boolean t2= false;
-	boolean t3= false;
-	boolean t4= false;
-	boolean t5= false;
+	public boolean t1= false;
+  public boolean t2= false;
+	public boolean t3= false;
+  public boolean t4= false;
+	public boolean t5= false;
 
-  JLabel top; JLabel end;
-  JLabel nombre= new JLabel ("Nombre:",SwingConstants.CENTER);
-  JLabel especialidad= new JLabel("Especialidad:",SwingConstants.CENTER);
-  JLabel turno= new JLabel("Turno:",SwingConstants.CENTER);
-  JLabel cedula= new JLabel("Cedula:",SwingConstants.CENTER);
-  JLabel escuela= new JLabel("Escuela:",SwingConstants.CENTER);
+  public JLabel top; JLabel end;
+  public JLabel nombre= new JLabel ("Nombre:",SwingConstants.CENTER);
+  public JLabel especialidad= new JLabel("Especialidad:",SwingConstants.CENTER);
+  public JLabel turno= new JLabel("Turno:",SwingConstants.CENTER);
+  public JLabel cedula= new JLabel("Cedula:",SwingConstants.CENTER);
+  public JLabel escuela= new JLabel("Escuela:",SwingConstants.CENTER);
+  JLabel lbl1;JLabel doc1Nombre; JLabel doc1Esp; JLabel doc1Turno; JLabel doc1Cedula;JLabel doc1Escuela;
+  JLabel lbl2;JLabel doc2Nombre; JLabel doc2Esp; JLabel doc2Turno; JLabel doc2Cedula;JLabel doc2Escuela;
+  JLabel lbl3;JLabel doc3Nombre; JLabel doc3Esp; JLabel doc3Turno; JLabel doc3Cedula;JLabel doc3Escuela;
+  JLabel lbl4;JLabel doc4Nombre; JLabel doc4Esp; JLabel doc4Turno; JLabel doc4Cedula;JLabel doc4Escuela;
 
-
-   JLabel lbl1;JLabel doc1Nombre; JLabel doc1Esp; JLabel doc1Turno; JLabel doc1Cedula;JLabel doc1Escuela;
-   JLabel lbl2;JLabel doc2Nombre; JLabel doc2Esp; JLabel doc2Turno; JLabel doc2Cedula;JLabel doc2Escuela;
-   JLabel lbl3;JLabel doc3Nombre; JLabel doc3Esp; JLabel doc3Turno; JLabel doc3Cedula;JLabel doc3Escuela;
-   JLabel lbl4;JLabel doc4Nombre; JLabel doc4Esp; JLabel doc4Turno; JLabel doc4Cedula;JLabel doc4Escuela;
-
-    Color color1= new Color(7,3,26);//Azul oscuro
-    Color color2= new Color(255,203,116);//AMARILLO
-    Color color3= new Color(79,138,139);// Azul claro
-    Color color4= new Color(244,246,255);// blanco azulado
-		int numUsers;
-
+  public Color color1= new Color(7,3,26);//Azul oscuro
+  public Color color2= new Color(255,203,116);//AMARILLO
+  public Color color3= new Color(79,138,139);// Azul claro
+  public Color color4= new Color(244,246,255);// blanco azulado
+	public int numUsers;
 
 	public Doctores(String paciente, int numUser){
 			this.paciente = paciente;
@@ -272,19 +272,19 @@ public class Doctores extends JFrame implements ActionListener{
   	}
     if (event.getSource()== this.btnAC1) {
 			Horario h = new Horario(doc1Nombre.getText(),this.paciente,numUsers);
-
+			this.dispose();
     }
     if (event.getSource()== this.btnAC2) {
 			Horario h = new Horario(doc2Nombre.getText(),this.paciente,numUsers);
-
+			this.dispose();
     }
     if (event.getSource()== this.btnAC3) {
 			Horario h = new Horario(doc3Nombre.getText(),this.paciente,numUsers);
-
+			this.dispose();
     }
     if (event.getSource()== this.btnAC4) {
 			Horario h = new Horario(doc4Nombre.getText(),this.paciente,numUsers);
+			this.dispose();
     }
-
   }
 }

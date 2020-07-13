@@ -34,7 +34,7 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
 
   public ServerSocket server;
   public Socket socket;
-  public ObjectInputStream is;
+  //public ObjectInputStream is;
   public DataOutputStream os;
 
   public Servidor(ServerSocket server,Socket socket){
@@ -196,6 +196,12 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
         lblDom.setText("");
         lblEnfermedades.setText("");
         lblCurp.setText("");
+        try{
+          Thread.sleep(1000);
+        }catch (Exception ed) {
+          System.out.println("Error en el sleep");
+        }
+        this.dispose();
         // try {
         //   this.socket.close();
         // } catch(Exception exception) { }
@@ -220,7 +226,7 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
   public void run(){
     try {
       while(true){
-        is = new ObjectInputStream(this.socket.getInputStream());
+        ObjectInputStream is = new ObjectInputStream(socket.getInputStream());
         Objeto o = (Objeto)is.readObject();
         lblNombre.setText(o.nombre);
         lblCel.setText(o.cel);

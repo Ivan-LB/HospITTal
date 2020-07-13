@@ -202,7 +202,7 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
         }catch (Exception ed) {
           System.out.println("Error en el sleep");
         }
-        ControlDoctores cd = new ControlDoctores();
+        // ControlDoctores cd = new ControlDoctores();
         this.dispose();
         // try {
         //   this.socket.close();

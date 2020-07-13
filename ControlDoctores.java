@@ -70,11 +70,11 @@ class ControlDoctores extends JFrame implements ActionListener{
 		proximaCita.setOpaque(false);
 		proximaCita.setForeground(Color.white);
 
-      lugar = new JTextArea("Seleccione un paciente:");
-      lugar.setFont(new Font("Serif", Font.PLAIN, 20));
-      lugar.setBounds(50,325,400,22);
-      lugar.setOpaque(false);
-      lugar.setForeground(Color.white);
+    lugar = new JTextArea("Seleccione un paciente:");
+    lugar.setFont(new Font("Serif", Font.PLAIN, 20));
+    lugar.setBounds(50,325,400,22);
+    lugar.setOpaque(false);
+    lugar.setForeground(Color.white);
 
 		linea = new JLabel();
 		linea.setBounds(45,275,600,5);
@@ -98,9 +98,9 @@ class ControlDoctores extends JFrame implements ActionListener{
 		salir.setOpaque(false);
 		salir.setForeground(Color.BLACK);
 
-    doctores = new JButton("Abrir Doctores");
+    doctores = new JButton("Abrir Expedientes");
     doctores.setFont(new Font("Serif", Font.PLAIN, 11));
-    doctores.setBounds(50,325,200,40);
+    doctores.setBounds(50,344,200,40);
     doctores.setOpaque(true);
     doctores.setBackground(color3);
     doctores.setForeground(Color.BLACK);
@@ -149,28 +149,9 @@ class ControlDoctores extends JFrame implements ActionListener{
 					nombre_archivo_guardar = fichero.getAbsolutePath();
 				}
 				ArrayList<String> contenido = new ArrayList<String>();
-				String cadenaP = new String();
-		    try{
-					String ruta = nombre_archivo_guardar;
-					FileInputStream fis = new FileInputStream(ruta);
-					DataInputStream din = new DataInputStream(fis);
-					BufferedReader br = new BufferedReader(new InputStreamReader(din));
-					cadenaP=br.readLine();
-					while(cadenaP!=null){
-						contenido.add(cadenaP);
-						cadenaP=br.readLine();
-					}
-					br.close();
-					contenido = Archivo.leerTodo(fc.getSelectedFile().getName());
-					cadenaP = "";
-					for (int i=0; i<contenido.size(); i++) {
-						cadenaP = cadenaP + contenido.get(i) + "\n";
-					}
-					lugar.setText(cadenaP);;
-				}
-				catch(Exception e){
-					JOptionPane.showMessageDialog(null,"No se encontro el archivo");
-					//txtArea.setText("No se encontro el archivo");
+				contenido = Archivo.leerTodo(nombre_archivo_guardar);
+				for(int i=0; i<contenido.size(); i++) {
+					lugar.append(contenido.get(i));
 				}
 			}
 	  }

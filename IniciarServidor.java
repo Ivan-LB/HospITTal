@@ -12,6 +12,7 @@ class IniciarServidor{
   public static ServerSocket server;
   //public ArrayList<Socket> clientes = new ArrayList<Socket>();
   public static void main(String[] args){
+    ControlDoctores cd = new ControlDoctores();
 		try{
 			server = new ServerSocket(9000);
       while(true){

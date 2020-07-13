@@ -43,7 +43,5 @@ cita, en el servidor se pueden checar los datos del paciente y las citas que ten
 </ul>
 <h2> Preview del Programa Cliente</h2>
   <img src=https://github.com/Ivan-LB/HospITTal/blob/master/Imagenes%20del%20proyecto/iniciox.JPG>
-  <img src=https://github.com/Ivan-LB/HospITTal/blob/master/Imagenes%20del%20proyecto/sesionx.JPG>
   <img src=https://github.com/Ivan-LB/HospITTal/blob/master/Imagenes%20del%20proyecto/perfil.JPG>
-  <img src=https://github.com/Ivan-LB/HospITTal/blob/master/Imagenes%20del%20proyecto/imagenqueivanocupa.JPG>
 

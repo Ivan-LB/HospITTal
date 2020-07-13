@@ -41,4 +41,9 @@ cita, en el servidor se pueden checar los datos del paciente y las citas que ten
 <li> <strong>SublimeText3</strong>-<em>Editor de texto</em></li>
 <li> <strong>Atom</strong>-<em>Editor de texto colaborativo</em></li>
 </ul>
-<h2> Preview del Programa</h2>
+<h2> Preview del Programa Cliente</h2>
+  <img src=https://github.com/Ivan-LB/HospITTal/blob/master/Imagenes%20del%20proyecto/iniciox.JPG>
+  <img src=https://github.com/Ivan-LB/HospITTal/blob/master/Imagenes%20del%20proyecto/sesionx.JPG>
+  <img src=https://github.com/Ivan-LB/HospITTal/blob/master/Imagenes%20del%20proyecto/perfil.JPG>
+  <img src=https://github.com/Ivan-LB/HospITTal/blob/master/Imagenes%20del%20proyecto/imagenqueivanocupa.JPG>
+

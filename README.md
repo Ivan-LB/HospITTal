@@ -2,7 +2,7 @@
 <img src=https://github.com/Ivan-LB/HospITTal/blob/master/imagenes/logo1.png>
 <h2> ¿Qué es HospITTal? </h2>
 <p>Esta es una aplicacion para un hospital que permite al usuario registrarse y agendar citas desde la comodidad de su hogar.<br>
-Una de las funciones relevantes es que se guardan los formularios clinicos y el operador del servidor puede acceder a ellos<br></p>
+Las funciones del servidor son simples: aceptar o rechazar a los clientes y poder revisar los expedientes de los usuarios<br></p>
 <h2> ¿Que hace el programa? </h2>
 <p>El programa nos abre una terminal con una pregunta <em><q>¿Es su primera vez aqui?</q></em> seguido de dos botones.<br>
 <strong>Si se pulsa el boton Si</strong> nos generara la ventana de registro, en la cual se ingresa primero el usuario y la contraseña del mismo<br>

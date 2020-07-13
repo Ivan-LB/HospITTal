@@ -48,7 +48,7 @@ public class Archivo
 	public static void CrearArchivo(ArrayList<String> datosPaciente, String nombre){
 		try
 		{
-			String ruta = "./ArchivosClientes/"+nombre;
+			String ruta = "./"+nombre;
 			File file = new File(ruta);
 			if(!file.exists())
 			{

@@ -1,0 +1,8 @@
+Nombre del paciente: Ivan Lorenzana Belli
+Celular del paciente: 6631041142
+E-mail del paciente: ivanlorenzana@outlook.com
+Tipo de Sangre: O+
+Genero del paciente: Masculino
+Domicilio del paciente: Lomas Virreyes
+Enfermedades Cronicas: Ninguna
+CURP del paciente: LOBI091201H

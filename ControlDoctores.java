@@ -10,6 +10,7 @@ import java.awt.event.*;
 import java.lang.*;
 import java.net.*;
 import java.util.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 class ControlDoctores extends JFrame implements ActionListener{
 	//OBJETOS
@@ -31,11 +32,12 @@ class ControlDoctores extends JFrame implements ActionListener{
 	public Color color4= new Color(244,246,255);// blanco azulado
 
 	public JButton salir;
-
+	public String nombrePaciente;
 	public JButton doctores;
 
 	public ControlDoctores()
 	{
+		this.nombrePaciente = nombrePaciente;
 		panel = new JPanel();
 		panel.setLayout(null);
 
@@ -134,27 +136,42 @@ class ControlDoctores extends JFrame implements ActionListener{
 				if(event.getSource() == this.salir){
 					System.exit(0);
 				}
-	      else if(event.getSource() == this.doctores)
-	      {
-					JFileChooser fc=new JFileChooser();
-					fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-					int seleccion=fc.showOpenDialog(panel);
-					if(seleccion==JFileChooser.APPROVE_OPTION){
-					    File fichero=fc.getSelectedFile();
-
-					    try(FileReader fr=new FileReader(fichero)){
-					        String cadena="";
-					        int valor=fr.read();
-					        while(valor!=-1){
-					            cadena=cadena+(char)valor;
-					            valor=fr.read();
-					        }
-					        lugar.setText(cadena);
-					    } catch (IOException e1) {
-					        e1.printStackTrace();
-					    }
+	      else if(event.getSource() == this.doctores){
+					String nombre_archivo_guardar = "";
+					JFileChooser fc = new JFileChooser();
+					FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de Texto","txt");
+					fc.setFileFilter(filter);
+					fc.setCurrentDirectory(new java.io.File("./Expedientes"));
+					// fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+					// int seleccion=fc.showOpenDialog(panel);
+				if(/*seleccion==JFileChooser.APPROVE_OPTION*/fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+				  File fichero=fc.getSelectedFile();
+					nombre_archivo_guardar = fichero.getAbsolutePath();
+				}
+				ArrayList<String> contenido = new ArrayList<String>();
+				String cadenaP = new String();
+		    try{
+					String ruta = nombre_archivo_guardar;
+					FileInputStream fis = new FileInputStream(ruta);
+					DataInputStream din = new DataInputStream(fis);
+					BufferedReader br = new BufferedReader(new InputStreamReader(din));
+					cadenaP=br.readLine();
+					while(cadenaP!=null){
+						contenido.add(cadenaP);
+						cadenaP=br.readLine();
 					}
-	      }
-	}
-
+					br.close();
+					contenido = Archivo.leerTodo(fc.getSelectedFile().getName());
+					cadenaP = "";
+					for (int i=0; i<contenido.size(); i++) {
+						cadenaP = cadenaP + contenido.get(i) + "\n";
+					}
+					lugar.setText(cadenaP);;
+				}
+				catch(Exception e){
+					JOptionPane.showMessageDialog(null,"No se encontro el archivo");
+					//txtArea.setText("No se encontro el archivo");
+				}
+			}
+	  }
 }

@@ -73,7 +73,7 @@ class PerfilUsuario extends JFrame implements ActionListener{
 		proximaCita.setOpaque(false);
 		proximaCita.setForeground(Color.white);
 
-    String ruta = "./ArchivosClientes/"+nombreUsuario;
+    String ruta = "./CitaClientes/"+nombreUsuario+".txt";
     fechaCitas = Archivo.leerTodo(ruta);
     if(fechaCitas != null){
       String info = fechaCitas.get(numUsers);

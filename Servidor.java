@@ -186,7 +186,8 @@ public class Servidor extends JFrame implements Runnable,ActionListener{
         datosPaciente.add("Domicilio del paciente: "+lblDom.getText());
         datosPaciente.add("Enfermedades Cronicas: "+lblEnfermedades.getText());
         datosPaciente.add("CURP del paciente: "+lblCurp.getText());
-
+        String paciente = "Expedientes/"+lblNombre.getText()+".txt";
+        Archivo.CrearArchivo(datosPaciente,paciente);
         lblNombre.setText("");
         lblCel.setText("");
         lblMail.setText("");

@@ -41,6 +41,7 @@ class Horario extends JFrame implements ActionListener,ItemListener{
 	public ArrayList<String> datosPaciente = new ArrayList<>();
 	public JButton salir;
 	public String paciente;
+	public String pacienteC;
 	public int numUsers;
 	public Horario(String nombreDoctor, String paciente, int numUser)
 	{
@@ -368,7 +369,8 @@ public void actionPerformed(ActionEvent event){
 							datosPaciente.add("Su cita es: "+fechaFinal);
 							datosPaciente.add("Doctor: "+nombreDoctor);
 							datosPaciente.add("Favor de Presentarse en el consultorio 1");
-							Archivo.CrearArchivo(datosPaciente,paciente);
+							pacienteC = "CitaClientes/"+paciente+".txt";
+							Archivo.CrearArchivo(datosPaciente,pacienteC);
 						break;
 						case "Pepe Aguilar":
 							arrayCitas.add(Integer.toString(numeroEnviar));
@@ -376,7 +378,8 @@ public void actionPerformed(ActionEvent event){
 							datosPaciente.add("Su cita es: "+fechaFinal);
 							datosPaciente.add("Doctor: "+nombreDoctor);
 							datosPaciente.add("Favor de Presentarse en el consultorio 2");
-							Archivo.CrearArchivo(datosPaciente,paciente);
+							pacienteC = "CitaClientes/"+paciente+".txt";
+							Archivo.CrearArchivo(datosPaciente,pacienteC);
 						break;
 						case "Dante Cambrano":
 							arrayCitas.add(Integer.toString(numeroEnviar));
@@ -384,7 +387,8 @@ public void actionPerformed(ActionEvent event){
 							datosPaciente.add("Su cita es: "+fechaFinal);
 							datosPaciente.add("Doctor: "+nombreDoctor);
 							datosPaciente.add("Favor de Presentarse en el consultorio 3");
-							Archivo.CrearArchivo(datosPaciente,paciente);
+							pacienteC = "CitaClientes/"+paciente+".txt";
+							Archivo.CrearArchivo(datosPaciente,pacienteC);
 						break;
 						case "Estefania Alba":
 							arrayCitas.add(Integer.toString(numeroEnviar));
@@ -392,7 +396,8 @@ public void actionPerformed(ActionEvent event){
 							datosPaciente.add("Su cita es: "+fechaFinal);
 							datosPaciente.add("Doctor: "+nombreDoctor);
 							datosPaciente.add("Favor de Presentarse en el consultorio 4");
-							Archivo.CrearArchivo(datosPaciente,paciente);
+							pacienteC = "CitaClientes/"+paciente+".txt";
+							Archivo.CrearArchivo(datosPaciente,pacienteC);
 						break;
 					}
 				} else {
